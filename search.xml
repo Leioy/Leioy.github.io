@@ -8,9 +8,4 @@
         <tag>技术博客</tag>
       </tags>
   </entry>
-  <entry>
-    <title><![CDATA[hello]]></title>
-    <url>%2F2017%2F12%2Fhello.html</url>
-    <content type="text"><![CDATA[之前一直在简书上写东西，久而久之觉得简书的页面的页面太丑了，于是想自己搭建一个好看点博客，上网一搜，结果都推荐用hexo + github搭建博客，琢磨了半天终于搭建好了。好啦，我要开始自己的博客之旅啦]]></content>
-  </entry>
 </search>
