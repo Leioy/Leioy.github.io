@@ -276,6 +276,264 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/引用类型对象拷贝.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Leioy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Leioy">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Leioy" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/12/引用类型对象拷贝.html" itemprop="url">
+                  引用类型对象拷贝
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-10T02:03:30+08:00">
+                2017-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+ 
+        
+
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="引用类型有哪些？非引用类型有哪些"><a href="#引用类型有哪些？非引用类型有哪些" class="headerlink" title="引用类型有哪些？非引用类型有哪些"></a>引用类型有哪些？非引用类型有哪些</h2><p>引用类型包括：对象，数组，函数，正则。指的是那些保存在堆内存中的对象，变量中保存的实际上只是一个指针，这个指针执行内存中的另一个位置，由该位置保存对象。<br>基本类型值包括：数值，布尔值，null和undefined。指的是保存在栈内存中的简单数据段。</p>
+<h2 id="如下代码输出什么？为什么"><a href="#如下代码输出什么？为什么" class="headerlink" title="如下代码输出什么？为什么"></a>如下代码输出什么？为什么</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>:<span class="number">1</span>, <span class="attr">b</span>:<span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;<span class="attr">a</span>:<span class="number">1</span>, <span class="attr">b</span>:<span class="number">2</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(obj1 == obj2); <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1 = obj2); <span class="comment">//&#123;a:1,b:2&#125;(事实上是obj2的内容，实际传的值为obj2的指针)</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1 == obj2);<span class="comment">//true 两者变量内存储的指针相等</span></span><br></pre></td></tr></table></figure>
+<h2 id="如下代码输出什么？为什么-1"><a href="#如下代码输出什么？为什么-1" class="headerlink" title="如下代码输出什么？为什么"></a>如下代码输出什么？为什么</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="number">2</span></span><br><span class="line"><span class="keyword">var</span> c = &#123; <span class="attr">name</span>: <span class="string">'饥人谷'</span>, <span class="attr">age</span>: <span class="number">2</span> &#125;</span><br><span class="line"><span class="keyword">var</span> d = [a, b, c]</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> aa = a</span><br><span class="line"><span class="keyword">var</span> bb = b</span><br><span class="line"><span class="keyword">var</span> cc = c</span><br><span class="line"><span class="keyword">var</span> dd = d</span><br><span class="line"></span><br><span class="line">a = <span class="number">11</span></span><br><span class="line">b = <span class="number">22</span></span><br><span class="line">c.name = <span class="string">'hello'</span></span><br><span class="line">d[<span class="number">2</span>][<span class="string">'age'</span>] = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(aa)  <span class="comment">//1，传值赋值</span></span><br><span class="line"><span class="built_in">console</span>.log(bb)  <span class="comment">//2，传值赋值</span></span><br><span class="line"><span class="built_in">console</span>.log(cc)  <span class="comment">//&#123;name:"hello",age:3&#125;,传引用赋值</span></span><br><span class="line"><span class="built_in">console</span>.log(dd)  <span class="comment">//[1, 2, &#123;name:"hello",age:3&#125;],前两个数组元素传值，第三个传引用</span></span><br></pre></td></tr></table></figure>
+<h2 id="以下代码输出？为什么？"><a href="#以下代码输出？为什么？" class="headerlink" title="以下代码输出？为什么？"></a>以下代码输出？为什么？</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> c = &#123; <span class="attr">name</span>: <span class="string">'jirengu'</span>, <span class="attr">age</span>: <span class="number">2</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">  ++n</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f2</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">  ++obj.age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f1(a) </span><br><span class="line">f2(c) </span><br><span class="line">f1(c.age) </span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">//输出1，f1中相当于是声明了一个n=a，是把a的值赋给了n，++n变化的n的值，a不会发生变化。</span></span><br><span class="line"><span class="built_in">console</span>.log(c) <span class="comment">//输出&#123;name: "jirengu", age: 3&#125;，f2()中相当于obj=c。把c指向的地址赋值给了obj，所以++obj.age后，指向的地址内的值发生了变化，再打印c的时候打印的是指向的地址内的值，所以age变成3</span></span><br></pre></td></tr></table></figure>
+<h2 id="过滤如下数组，只保留正数，直接在原数组上操作"><a href="#过滤如下数组，只保留正数，直接在原数组上操作" class="headerlink" title="过滤如下数组，只保留正数，直接在原数组上操作"></a>过滤如下数组，只保留正数，直接在原数组上操作</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">-1</span>,<span class="number">-3</span>,<span class="number">2</span>,<span class="number">-5</span>]</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filter</span>(<span class="params">array</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;array.length;i++)&#123;</span><br><span class="line">      <span class="keyword">if</span>(array[i] &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">          array.splice(i,<span class="number">1</span>)</span><br><span class="line">          i--</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> array</span><br><span class="line">&#125;</span><br><span class="line">filter(arr) <span class="comment">//[3,1,2]</span></span><br></pre></td></tr></table></figure>
+<h2 id="过滤如下数组，只保留正数，原数组不变，生成新数组"><a href="#过滤如下数组，只保留正数，原数组不变，生成新数组" class="headerlink" title="过滤如下数组，只保留正数，原数组不变，生成新数组"></a>过滤如下数组，只保留正数，原数组不变，生成新数组</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">3</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">-1</span>,<span class="number">-3</span>,<span class="number">2</span>,<span class="number">-5</span>]</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filter</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> newArr = []</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; arr.length;i++)&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr[i] &gt; <span class="number">0</span>)&#123;</span><br><span class="line">      newArr.push(arr[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> newArr</span><br><span class="line">&#125;</span><br><span class="line">filter(arr)</span><br></pre></td></tr></table></figure>
+<h2 id="写一个深拷贝函数，用两种方式实现"><a href="#写一个深拷贝函数，用两种方式实现" class="headerlink" title="写一个深拷贝函数，用两种方式实现"></a>写一个深拷贝函数，用两种方式实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj=&#123;</span><br><span class="line">	a:<span class="number">1</span>,</span><br><span class="line">	b:<span class="number">2</span>,</span><br><span class="line">	c:&#123;</span><br><span class="line">		d:<span class="number">1</span>,</span><br><span class="line">		e:<span class="number">2</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy1</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> result = &#123;&#125;</span><br><span class="line">	 <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> obj)&#123;</span><br><span class="line">		result[key] = (<span class="keyword">typeof</span> obj[key] === <span class="string">'object'</span>)?deepCopy1(obj[key]):obj[key]</span><br><span class="line">	 &#125;</span><br><span class="line">	 <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line">deepCopy1(obj)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy2</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> result = &#123;&#125;</span><br><span class="line">	result = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj))</span><br><span class="line">	<span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br><span class="line">deepCopy2(obj)</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+  
+
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+         
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/函数声明和函数表达式.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Leioy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Leioy">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Leioy" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/12/函数声明和函数表达式.html" itemprop="url">
+                  函数声明和函数表达式
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-10T01:32:18+08:00">
+                2017-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+ 
+        
+
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="函数声明和函数表达式有什么区别"><a href="#函数声明和函数表达式有什么区别" class="headerlink" title="函数声明和函数表达式有什么区别"></a>函数声明和函数表达式有什么区别</h2><p>函数声明和函数表达式都能够定义一个函数。<br>函数声明是指使用function关键字定义一个函数，不必放在调用的前面。<br>函数表达式则是将函数的指针赋值给声明变量，本质上是一个表达式，使用时必须放在调用的前面。</p>
+<h2 id="什么是变量的声明前置？什么是函数的声明前置"><a href="#什么是变量的声明前置？什么是函数的声明前置" class="headerlink" title="什么是变量的声明前置？什么是函数的声明前置"></a>什么是变量的声明前置？什么是函数的声明前置</h2><p>变量声明前置就是在一个作用域中，所有的变量都被放在作用域的顶部声明，举例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="keyword">var</span> a=<span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>(a);</span><br><span class="line"></span><br><span class="line">相当于</span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//undefined</span></span><br><span class="line">a=<span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//1</span></span><br></pre></td></tr></table></figure></p>
+<p>函数声明前置把函数提升到作用域的顶部声明（函数表达式不可以），举例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sayHello();  <span class="comment">//hello</span></span><br><span class="line">sayHi();  <span class="comment">//报错</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"hello"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sayHi=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"hi"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="arguments-是什么"><a href="#arguments-是什么" class="headerlink" title="arguments 是什么"></a>arguments 是什么</h2><p>arguments是一个类数组对象，类似数组的方式，可以通过下标的方式去获取值，但它本身不是数组，没有数组的一些特性，所以叫类数组对象。在函数内部，可以使用arguments对象获取到该函数的所有传入参数</p>
+<h2 id="函数的”重载”怎样实现"><a href="#函数的”重载”怎样实现" class="headerlink" title="函数的”重载”怎样实现"></a>函数的”重载”怎样实现</h2><p>重载是指不同的函数使用相同的函数名，但是函数的参数个数或类型不同。调用的时候根据函数的参数来区别不同的函数。<br>JS并不像其他强类型语言一样可以声明重载函数，若在原先声明的函数后再声明一个不同参数数量的函数(JS是弱语言，声明的函数不需要指明参数类型)，解析器会用后面声明的函数覆盖前面声明的函数。</p>
+<p>1.在函数体内针对不同的参数调用执行相应的逻辑<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printInfo</span>(<span class="params">name, age, sex</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(name)&#123; <span class="built_in">console</span>.log(name)&#125; &#125;</span><br><span class="line">    <span class="keyword">if</span>(age)&#123; <span class="built_in">console</span>.log(age) &#125;</span><br><span class="line">    <span class="keyword">if</span>(sex)&#123; <span class="built_in">console</span>.log(sex) &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  printInfo(<span class="string">'xxx'</span>, <span class="number">26</span>)</span><br><span class="line">  printInfo(<span class="string">'xxx'</span>, <span class="number">26</span>, <span class="string">'male'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>2.使用arguments属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printInfo</span>(<span class="params">name, age, sex</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  printInfo(<span class="string">'xxx'</span>, <span class="number">26</span>)</span><br><span class="line">  printeInfo(<span class="string">'xxx'</span>, <span class="number">26</span>, <span class="string">'male'</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="立即执行函数表达式是什么？有什么作用"><a href="#立即执行函数表达式是什么？有什么作用" class="headerlink" title="立即执行函数表达式是什么？有什么作用"></a>立即执行函数表达式是什么？有什么作用</h2><p>立即执行函数的作用是隔离作用域，使被执行的函数内部的变量不会污染到外部，即外部不能访问函数内部的变量。<br><a href="https://segmentfault.com/a/1190000003985390" target="_blank" rel="noopener">参考</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+  
+
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+         
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/数据类型运算符流程控制语句.html">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1476,350 +1734,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/css基础.html">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Leioy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Leioy">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Leioy" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/12/css基础.html" itemprop="url">
-                  css基础
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-08T01:46:41+08:00">
-                2017-12-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
- 
-        
-
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="CSS的全称是什么"><a href="#CSS的全称是什么" class="headerlink" title="CSS的全称是什么?"></a>CSS的全称是什么?</h2><p>层叠样式表（英语：Cascading Style Sheets，简写CSS），一种用来为结构化文档（如HTML文档或XML应用）添加样式（字体、间距和颜色等）的计算机语言，由W3C定义和维护。</p>
-<h2 id="CSS有几种引入方式-link-和-import-有什么区别"><a href="#CSS有几种引入方式-link-和-import-有什么区别" class="headerlink" title="CSS有几种引入方式? link 和@import 有什么区别?"></a>CSS有几种引入方式? link 和@import 有什么区别?</h2><h3 id="CSS有几种引入方式"><a href="#CSS有几种引入方式" class="headerlink" title="CSS有几种引入方式"></a>CSS有几种引入方式</h3><p>四种，分别为行内样式，内嵌样式和外联样式以及@import</p>
-<h3 id="link-和-import-有什么区别"><a href="#link-和-import-有什么区别" class="headerlink" title="link 和@import 有什么区别"></a>link 和@import 有什么区别</h3><ol>
-<li>link是XHTML标签，除了加载CSS外，还可以定义RSS等其他事务；@import属于CSS范畴，只能加载CSS。</li>
-<li>link引用CSS时，在页面载入时同时加载；@import需要页面网页完全载入以后加载。所以有时候浏览@import加载CSS的页面时开始会没有样式（就是闪烁）。</li>
-<li>link是XHTML标签，无兼容问题；@import是在CSS2.1提出的，低版本的浏览器不支持。</li>
-<li>link支持使用Javascript控制DOM去改变样式；而@import不支持。</li>
-</ol>
-<h2 id="以下这几种文件路径分别用在什么地方，代表什么意思"><a href="#以下这几种文件路径分别用在什么地方，代表什么意思" class="headerlink" title="以下这几种文件路径分别用在什么地方，代表什么意思?"></a>以下这几种文件路径分别用在什么地方，代表什么意思?</h2><ul>
-<li>css/a.css<br>相对路径，当前目录下css文件夹内a.css文件</li>
-<li>./css/a.css<br>相对路径，同级目录下css文件夹内a.css文件</li>
-<li>b.css<br>相对路径，与当前文档同级目录下b.css文件</li>
-<li>../imgs/a.png<br>相对路径，上级文件夹下imgs文件夹内a.png文件</li>
-<li>/Users/hunger/project/css/a.css<br>绝对路径，根目录下对应路径的文件</li>
-<li>/static/css/a.css<br>绝对路径，根目录下对应路径的文件</li>
-<li><a href="http://cdn.jirengu.com/kejian1/8-1.png" target="_blank" rel="noopener">http://cdn.jirengu.com/kejian1/8-1.png</a><br>绝对路径，表示饥人谷该网站kejian1目录下的名为8-1.png的图片地址</li>
-</ul>
-<h2 id="列出5条以上html和-css-的书写规范"><a href="#列出5条以上html和-css-的书写规范" class="headerlink" title="列出5条以上html和 css 的书写规范"></a>列出5条以上html和 css 的书写规范</h2><ul>
-<li>一次缩进2个空格，不要使用 tab 或者混合 tab 和空格的缩进。</li>
-<li>HTML 元素名称，属性，属性值（除非 text/CDATA），CSS 选择器，属性，属性值应该使用小写。</li>
-<li>结尾切勿加空格空格不仅多余，而且在比较代码时会更麻烦。</li>
-<li>在 HTML 中通过指定编码方式，CSS 中不需要指定，因为默认是 UTF-8。</li>
-<li>使用注释来解释代码：包含的模块，功能以及优点。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-  
-
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-         
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/form表单.html">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Leioy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Leioy">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Leioy" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/12/form表单.html" itemprop="url">
-                  form表单
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-07T21:48:57+08:00">
-                2017-12-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
- 
-        
-
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="form表单有什么作用？有哪些常用的input-标签，分别有什么作用？"><a href="#form表单有什么作用？有哪些常用的input-标签，分别有什么作用？" class="headerlink" title="form表单有什么作用？有哪些常用的input 标签，分别有什么作用？"></a>form表单有什么作用？有哪些常用的input 标签，分别有什么作用？</h2><p>表单在网页中主要负责数据采集功能。一个表单有三个基本组成部分：</p>
-<ol>
-<li>表单标签：这里面包含了处理表单数据所用CGI程序的URL以及数据提交到服务器的方法。</li>
-<li>表单域：包含了文本框、密码框、隐藏域、多行文本框、复选框、单选框、下拉选择框和文件上传框等。</li>
-<li>表单按钮：包括提交按钮、复位按钮和一般按钮；用于将数据传送到服务器上的CGI脚本或者取消输入，还可以用表单按钮来控制其他定义了处理</li>
-</ol>
-<p>常见的input标签:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">标签</th>
-<th style="text-align:center">作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">text</td>
-<td style="text-align:center">单行文本框</td>
-</tr>
-<tr>
-<td style="text-align:center">password</td>
-<td style="text-align:center">密码框</td>
-</tr>
-<tr>
-<td style="text-align:center">checkbox</td>
-<td style="text-align:center">多选输入框</td>
-</tr>
-<tr>
-<td style="text-align:center">radio</td>
-<td style="text-align:center">单选按钮</td>
-</tr>
-<tr>
-<td style="text-align:center">file</td>
-<td style="text-align:center">上传文件</td>
-</tr>
-<tr>
-<td style="text-align:center">hidden</td>
-<td style="text-align:center">隐藏域</td>
-</tr>
-<tr>
-<td style="text-align:center">submit</td>
-<td style="text-align:center">数据提交按钮</td>
-</tr>
-<tr>
-<td style="text-align:center">button</td>
-<td style="text-align:center">普通按钮</td>
-</tr>
-</tbody>
-</table>
-<h2 id="post-和-get-方式的区别"><a href="#post-和-get-方式的区别" class="headerlink" title="post 和 get 方式的区别"></a>post 和 get 方式的区别</h2><ul>
-<li>GET提交：请求的数据会附在URL之后(就是把数据放置在HTTP协议头中)，以?分割URL和传输数据，多个参数用&amp;连接。如果数据是英文字母数字，原样发送，如果是空格，转换为+，如果是中文其他字符，则直接把字符串用BASE64加密，得出如： %E4%BD%A0%E5%A5%BD，其中%XX中的XX为该符号以16进制表示的ASCII。<br>示例：<br><img src="/images/form1.png" alt=""><br>点击提交,地址跳转为<br><img src="/images/form2.png" alt=""></li>
-<li>POST提交：把提交的数据放置在是HTTP包的包体中。<br>示例：<br><img src="/images/form3.png" alt=""><br>点击提交后信息并没有显示在地址栏里面<br>因此，GET提交的数据会在地址栏中显示出来，而POST提交，地址栏不会改变。</li>
-</ul>
-<p>传输数据的大小：首先声明：HTTP协议没有对传输的数据大小进行限制，HTTP协议规范也没有对URL长度进行限制</p>
-<p>而在实际开发中存在的限制主要有：</p>
-<p>GET: 特定浏览器和服务器对URL长度有限制，例如IE对URL长度的限制是2083字节(2K+35。对于其他浏览器，如Netscape、FireFox等，理论上没有长度限制，其限制取决于操作系统的支持。</p>
-<p>POST: 由于不是通过URL传值，理论上数据不受限。但实际各个WEB服务器会规定对post提交数据大小进行限制，Apache、IIS6都有各自的配置。</p>
-<h2 id="name属性"><a href="#name属性" class="headerlink" title="name属性"></a>name属性</h2><ol>
-<li>作为可与服务器交互数据的HTML元素的服务器端的标示，比如input、select、textarea、和button等。我们可以在服务器端根据其Name通过Request.Params取得元素提交的值。</li>
-<li>HTML元素Input type=’radio’分组，我们知道radio button控件在同一个分组类，check操作是mutex的，同一时间只能选中一个radio，这个分组就是根据相同的Name属性来实现的。</li>
-<li>建立页面中的锚点，我们知道<code>&lt;a href=&quot;URL&quot;&gt;link&lt;/a&gt;</code>是获得一个页面超级链接，如果不用href属性，而改用Name，如：<code>&lt;a name=&quot;PageBottom&quot;&gt;&lt;/a&gt;</code>，我们就获得了一个页面锚点。</li>
-<li>作为对象的Identity，如Applet、Object、Embed等元素。比如在Applet对象实例中，我们将使用其Name来引用该对象。</li>
-<li>在IMG元素和MAP元素之间关联的时候，如果要定义IMG的热点区域，需要使用其属性usemap，使usemap=”#name”(被关联的MAP元素的Name)。</li>
-<li>某些特定元素的属性，如attribute，meta和param。例如为Object定义参数<param name="appletParameter" value="value">或Meta中<meta name="Author" content="Dave Raggett">。</li>
-</ol>
-<h2 id="radio如何分组"><a href="#radio如何分组" class="headerlink" title="radio如何分组"></a>radio如何分组</h2><p>在同一个分组里，name属性要有相同的值。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"gender"</span> <span class="attr">value</span>=<span class="string">"male"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"gender"</span> <span class="attr">value</span>=<span class="string">"female"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="placeholder-属性有什么作用"><a href="#placeholder-属性有什么作用" class="headerlink" title="placeholder 属性有什么作用?"></a>placeholder 属性有什么作用?</h2><p>可以在文本输入框内显示默认的提示字符</p>
-<h2 id="type-hidden隐藏域有什么作用-举例说明"><a href="#type-hidden隐藏域有什么作用-举例说明" class="headerlink" title="type=hidden隐藏域有什么作用? 举例说明"></a>type=hidden隐藏域有什么作用? 举例说明</h2><ol>
-<li>隐藏数据一起发送给服务器。</li>
-<li>作为LocalStorage的替代品。</li>
-<li>当有多个submit按钮时，可以用于确认是哪个按钮提交的表单。</li>
-<li>可以用于联系多个表单。</li>
-<li>作为全局变量使用。</li>
-<li>作为父窗口的隐藏域，对小窗口传参。</li>
-</ol>
-<h2 id="input-type-’submit’-和type-’button’-有什么区别"><a href="#input-type-’submit’-和type-’button’-有什么区别" class="headerlink" title="input type=’submit’ 和type=’button’ 有什么区别"></a>input type=’submit’ 和type=’button’ 有什么区别</h2><p>在一个页面上话一个按钮有四种方法：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 这就是一个按钮。如果你不写javascript 的话，按下去什么也不会发生。 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 这样的按钮用户点击之后会自动提交 form，除非你写了javascript 阻止它。 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 这个按钮放在 form 中也会点击自动提交，比前两个的优点是按钮的内容不光可以有文字，还可以有图片等多媒体内容。（当然，前两个用图片背景也可以做到）。它的缺点是不同的浏览器得到的 value 值不同；可能还有其他的浏览器兼容问题 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 其他标签，例如 a, img, span, div，然后用图片把它伪装成一个按钮。 --&gt;</span></span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-  
-
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-         
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1867,7 +1781,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
