@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JS相关概念]]></title>
+    <url>%2F2017%2F12%2FJS%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5.html</url>
+    <content type="text"><![CDATA[CSS和JS在网页中的放置顺序是怎样的？为了防止白屏与FOUC，CSS应放置于head标签内。为防止JS阻塞加载，JS应放置于body标签末尾。 简述网页的渲染机制 构建DOM树(DOM tree)：从上到下解析HTML文档生成DOM节点树（DOM tree），也叫内容树（content tree） 构建CSSOM(CSS Object Model)树：加载解析样式生成CSSOM树 执行JavaScript：加载并执行JavaScript代码（包括内联代码或外联JavaScript文件） 构建渲染树(render tree)：根据DOM树和CSSOM树,生成渲染树(render tree) 布局（layout）：根据渲染树将节点树的每一个节点布局在屏幕上的正确位置 绘制（painting）：遍历渲染树绘制所有节点，为每一个节点适用对应的样式，这一过程是通过UI后端模块完成 相关文章 白屏和FOUC白屏浏览器的渲染需要先构建 DOM 和 CSSOM 树，假如 CSS 获取时间过长，就会导致 CSSOM 生成过久，浏览器只能等待，这时候就会出现长时间白屏，直到 DOM 和 CSSOM 构建完成。通常打开页面都会短暂白屏，因为 DOM 和 CSSOM 构建需要时间。 导致白屏的原因： 如果把样式放在底部,对于IE浏览器,由于DOM树过大，浏览器解析HTML文件时间过长但却没有解析CSS文件，在某些场景下(新窗口打开,刷新等)页面会出现白屏,而不是内容逐步展现 如果使用 @import 标签,即使 CSS 放入 link, 并且放在头部,也可能出现白屏 脚本会阻塞后面内容的呈现及其后组件的下载。对于图片和CSS, 在加载时会并发加载(如一个域名下同时加载两个文件). 但在加载 JavaScript 时,会禁用并发,并且阻止其他内容的下载. 所以把 JavaScript 放入页面顶部也会导致 白屏 现象 FOUC（Flash of Unstyled Content 无样式内容闪烁） 如果把样式放在底部,对于IE浏览器,在某些场景下(点击链接,输入URL,使用书签进入等),会出现 FOUC 现象(逐步加载无样式的内容,等CSS加载后页面突然展现样式).对于 Firefox 会一直表现出 FOUC Firefox浏览器经常出现FOUC现象与其渲染方式有关，Firefox在生成DOM后，将无样式内容展现，等到 CSSOM 生成了，再重绘渲染，这样就会看到一部分没样式的内容，然后再看到有样式的。这种分块分步的渲染 async和defer的作用是什么？有什么区别两者都是使脚本异步加载，没有 defer 或 async，浏览器会立即加载并执行指定的脚本，“立即”指的是在渲染该 script 标签之下的文档元素之前，也就是说不等待后续载入的文档元素，读到就加载并执行。 async：加载和渲染后续文档元素的过程将和 script.js 的加载与执行并行进行（异步）。 defer：加载后续文档元素的过程将和 script.js 的加载并行进行（异步），但 script.js 的执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。 区别：defer:脚本延迟到文档解析和显示后执行，有顺序async:不保证顺序]]></content>
+      <tags>
+        <tag>技术博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[css综合]]></title>
+    <url>%2F2017%2F12%2Fcss%E7%BB%BC%E5%90%88.html</url>
+    <content type="text"><![CDATA[说一说你平时写代码遵守的编码规范 良好的命名规范ID和class的命名尽可能短，并符合语义。多个单词的拼接用 ‘-‘ 符号链接，尽量使用小写字母 代码缩写css代码缩写可以提高写代码的速度，精简代码质量。 利用CSS继承如果页面中父元素的多个子元素使用相同的样式，那最好把他们相同的样式定 义在其父元素上，让它们继承这些CSS样式。这样可以很好的维护代码，并且还可以减少代码量。 使用多重选择器可以合并多个CSS选择器为一个，如果他们有共同的样式的话。这样做不但代 码简洁且可节省时间和空间 适当的代码注释代码注释可以让别人更容易读懂代码，且合理的组织代码注释，可使得结构更加清晰。 选择更优的样式属性值CSS中有些属性采用不同的属性值，虽然达到的效果差不多，当性能上却存在着差异，如：区别在于border:0把border设为0px，虽然在页面上看不见，但按border默认值理解，浏览器依然对border-width/border-color进行了渲染，即已经占用了内存值。而border:none把border设为“none”即没有，浏览器解析“none”时将不作出渲染动作，即不会消耗内存值。所以建议使用border:none;同样的，display:none隐藏对象浏览器不作渲染，不占用内存。而visibility:hidden则会。 避免使用css hack 垂直居中有几种实现方式，给出代码范例绝对定位实现居中padding值实现居中添加伪元素实现居中display:table-celltable标签实现居中flex实现居中]]></content>
+      <tags>
+        <tag>技术博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[浏览器兼容]]></title>
     <url>%2F2017%2F12%2F%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9.html</url>
     <content type="text"><![CDATA[什么是 CSS hackHack是针对不同的浏览器去写不同的CSS样式，从而让各浏览器能达到一致的渲染效果，那么针对不同的浏览器写不同的CSS CODE的过程，就叫CSS HACK，同时也叫写CSS Hack。 谈一谈浏览器兼容的思路 要不要做：产品的角度：（产品的受众、受众的浏览器比例、效果优先还是基本功能优先）成本的角度： (有无必要做某件事) 做到什么程度：让哪些浏览器支持哪些效果 如何做根据兼容需求选择技术框架/库(jquery)根据兼容需求选择兼容工具(html5shiv.js、respond.js、css reset、normalize.css、Modernizr) 列举5种以上浏览器兼容的写法 属性前缀法(即类内部Hack)：例如 IE6能识别下划线”_”和星号” “，IE7能识别星号” “，但不能识别下划线””，IE6~IE10都认识”\9”，但firefox前述三个都不能认识 123456.box &#123; color: red; _color: blue;/*IE6*/ *color: black;/*IE6,7*/ color: yellow;/*IE6-10*/&#125; 选择器前缀法(即选择器Hack)：比如IE6能识别*html .class{}，IE7能识别+html .class{} 条件注释 1&lt;!--[if IE 7]&gt;&lt;link rel="stylesheet" href="ie7.css" type="text/css"/&gt;&lt;![endif]--&gt; IE条件注释法结合选择器整体优化 利用normalize.css,统一所有浏览器样式 以下工具/名词是做什么的 条件注释条件注释是于HTML源码中被 IE 有条件解释的语句。条件注释可被用来向 IE提供及隐藏代码。 IE Hack针对IE浏览器编写不同的CSS的让IE能够在不同的正常渲染的过程 js 能力检测检测浏览器的能力检测目标不是检测特定的浏览器，而是检测浏览器的能力。这样，只需要检测浏览器是否支持特定的能力，就可以给出特定的解决方案。这一部分检测是解决浏览器兼容问题的主要检测。 html5shiv.jshtml5shiv.js是一个js库，用于解决IE9以下版本浏览器对HTML5新增标签不识别，并导致CSS不起作用的问题。 respond.jsRespond.js 是一个快速、轻量的 polyfill，用于为 IE6-8 以及其它不支持 CSS3 Media Queries 的浏览器提供媒体查询的 min-width 和 max-width 特性，实现响应式网页设计（Responsive Web Design）。 css reset重置浏览器的默认样式，更准确说就是通过重新定义标签样式，“覆盖”浏览器的CSS默认属性。 normalize.css先定义好一些CSS样式的同时保护有用的原生CSS样式，来让所有浏览器都按照同样的规则解释CSS。 ModernizrModernizr 是一个用来检测浏览器功能支持情况的 JavaScript 库。通过这个库我们可以检测不同的浏览器对于HTML5特性的支持情况。并以类标识的方式添加到标签中。 postCSSPostCSS是一个使用JavaScript插件来转换CSS的工具。能够达到兼容各种不同浏览器的效果，同时拥有很多插件。 一般在哪个网站查询属性兼容性？caniuse 查询css兼容性browserhacks查询Hack 的写法浏览器市场份额]]></content>
