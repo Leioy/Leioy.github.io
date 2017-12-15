@@ -88,18 +88,18 @@
 
 
 
-<meta name="description" content="说一说你平时写代码遵守的编码规范 良好的命名规范ID和class的命名尽可能短，并符合语义。多个单词的拼接用 ‘-‘ 符号链接，尽量使用小写字母 代码缩写css代码缩写可以提高写代码的速度，精简代码质量。 利用CSS继承如果页面中父元素的多个子元素使用相同的样式，那最好把他们相同的样式定 义在其父元素上，让它们继承这些CSS样式。这样可以很好的维护代码，并且还可以减少代码量。 使用多重选择器可以合">
+<meta name="description" content="DOM0 事件和DOM2级在事件监听使用方式上有什么区别？DOM0级事件监听就是把一个方法赋值给一个元素的事件处理程序属性。将这些属性的值设置为一个函数，就可以指定事件处理程序。一个事件只能绑定一次，并且新方法会覆盖老方法。例如btn.onclick=function(){} DOM2级事件监听定义了两个方法用于处理指定和删除事件处理程序的操作：addEventListener、removeEve">
 <meta name="keywords" content="技术博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="css综合">
-<meta property="og:url" content="http://yoursite.com/2017/12/css综合.html">
+<meta property="og:title" content="事件">
+<meta property="og:url" content="http://yoursite.com/2017/12/事件.html">
 <meta property="og:site_name" content="Leioy">
-<meta property="og:description" content="说一说你平时写代码遵守的编码规范 良好的命名规范ID和class的命名尽可能短，并符合语义。多个单词的拼接用 ‘-‘ 符号链接，尽量使用小写字母 代码缩写css代码缩写可以提高写代码的速度，精简代码质量。 利用CSS继承如果页面中父元素的多个子元素使用相同的样式，那最好把他们相同的样式定 义在其父元素上，让它们继承这些CSS样式。这样可以很好的维护代码，并且还可以减少代码量。 使用多重选择器可以合">
+<meta property="og:description" content="DOM0 事件和DOM2级在事件监听使用方式上有什么区别？DOM0级事件监听就是把一个方法赋值给一个元素的事件处理程序属性。将这些属性的值设置为一个函数，就可以指定事件处理程序。一个事件只能绑定一次，并且新方法会覆盖老方法。例如btn.onclick=function(){} DOM2级事件监听定义了两个方法用于处理指定和删除事件处理程序的操作：addEventListener、removeEve">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-09T13:04:30.767Z">
+<meta property="og:updated_time" content="2017-12-15T15:54:27.062Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="css综合">
-<meta name="twitter:description" content="说一说你平时写代码遵守的编码规范 良好的命名规范ID和class的命名尽可能短，并符合语义。多个单词的拼接用 ‘-‘ 符号链接，尽量使用小写字母 代码缩写css代码缩写可以提高写代码的速度，精简代码质量。 利用CSS继承如果页面中父元素的多个子元素使用相同的样式，那最好把他们相同的样式定 义在其父元素上，让它们继承这些CSS样式。这样可以很好的维护代码，并且还可以减少代码量。 使用多重选择器可以合">
+<meta name="twitter:title" content="事件">
+<meta name="twitter:description" content="DOM0 事件和DOM2级在事件监听使用方式上有什么区别？DOM0级事件监听就是把一个方法赋值给一个元素的事件处理程序属性。将这些属性的值设置为一个函数，就可以指定事件处理程序。一个事件只能绑定一次，并且新方法会覆盖老方法。例如btn.onclick=function(){} DOM2级事件监听定义了两个方法用于处理指定和删除事件处理程序的操作：addEventListener、removeEve">
 
 
 
@@ -127,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/css综合.html"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/事件.html"/>
 
 
 
 
 
-  <title> css综合 | Leioy </title>
+  <title> 事件 | Leioy </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +279,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/css综合.html">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/事件.html">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Leioy">
@@ -303,7 +303,7 @@
             
             
               
-                css综合
+                事件
               
             
           </h2>
@@ -318,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-09T20:53:14+08:00">
-                2017-12-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-15T23:47:43+08:00">
+                2017-12-15
               </time>
             
 
@@ -357,16 +357,11 @@
       
 
       
-        <h2 id="说一说你平时写代码遵守的编码规范"><a href="#说一说你平时写代码遵守的编码规范" class="headerlink" title="说一说你平时写代码遵守的编码规范"></a>说一说你平时写代码遵守的编码规范</h2><ol>
-<li>良好的命名规范<br>ID和class的命名尽可能短，并符合语义。多个单词的拼接用 ‘-‘ 符号链接，尽量使用小写字母</li>
-<li>代码缩写<br>css代码缩写可以提高写代码的速度，精简代码质量。</li>
-<li>利用CSS继承<br>如果页面中父元素的多个子元素使用相同的样式，那最好把他们相同的样式定 义在其父元素上，让它们继承这些CSS样式。这样可以很好的维护代码，并且还可以减少代码量。</li>
-<li>使用多重选择器<br>可以合并多个CSS选择器为一个，如果他们有共同的样式的话。这样做不但代 码简洁且可节省时间和空间</li>
-<li>适当的代码注释<br>代码注释可以让别人更容易读懂代码，且合理的组织代码注释，可使得结构更加清晰。</li>
-<li>选择更优的样式属性值<br>CSS中有些属性采用不同的属性值，虽然达到的效果差不多，当性能上却存在着差异，如：<br>区别在于border:0把border设为0px，虽然在页面上看不见，但按border默认值理解，浏览器依然对border-width/border-color进行了渲染，即已经占用了内存值。<br>而border:none把border设为“none”即没有，浏览器解析“none”时将不作出渲染动作，即不会消耗内存值。所以建议使用border:none;同样的，display:none隐藏对象浏览器不作渲染，不占用内存。而visibility:hidden则会。</li>
-<li>避免使用css hack</li>
-</ol>
-<h2 id="垂直居中有几种实现方式，给出代码范例"><a href="#垂直居中有几种实现方式，给出代码范例" class="headerlink" title="垂直居中有几种实现方式，给出代码范例"></a>垂直居中有几种实现方式，给出代码范例</h2><p><a href="http://js.jirengu.com/noxesetiru/1/edit?html,output" target="_blank" rel="noopener">绝对定位实现居中</a><br><a href="http://js.jirengu.com/xobuzedibi/1/edit?html,output" target="_blank" rel="noopener">padding值实现居中</a><br><a href="http://js.jirengu.com/xobuzedibi/2/edit?html,output" target="_blank" rel="noopener">添加伪元素实现居中</a><br><a href="http://js.jirengu.com/cinovuvedi/1/edit?html,output" target="_blank" rel="noopener">display:table-cell</a><br><a href="http://js.jirengu.com/cinovuvedi/2/edit?html,output" target="_blank" rel="noopener">table标签实现居中</a><br><a href="http://js.jirengu.com/cinovuvedi/3/edit?html,output" target="_blank" rel="noopener">flex实现居中</a></p>
+        <h2 id="DOM0-事件和DOM2级在事件监听使用方式上有什么区别？"><a href="#DOM0-事件和DOM2级在事件监听使用方式上有什么区别？" class="headerlink" title="DOM0 事件和DOM2级在事件监听使用方式上有什么区别？"></a>DOM0 事件和DOM2级在事件监听使用方式上有什么区别？</h2><p>DOM0级事件监听就是把一个方法赋值给一个元素的事件处理程序属性。将这些属性的值设置为一个函数，就可以指定事件处理程序。一个事件只能绑定一次，并且新方法会覆盖老方法。例如btn.onclick=function(){}</p>
+<p>DOM2级事件监听定义了两个方法用于处理指定和删除事件处理程序的操作：addEventListener、removeEventListener。所有的DOM节点都包含这两个方法，并且它们都接受三个参数：事件类型、事件处理方法、布尔参数。例如addEventListener、removeEventListener。可以选择按照冒泡的顺序处理还是捕获的顺序处理。</p>
+<h2 id="attachEvent与addEventListener的区别？"><a href="#attachEvent与addEventListener的区别？" class="headerlink" title="attachEvent与addEventListener的区别？"></a>attachEvent与addEventListener的区别？</h2><p>1.参数个数不相同，这个最直观，addEventListener有三个参数，attachEvent只有两个，attachEvent添加的事件处理程序只能发生在冒泡阶段，addEventListener第三个参数可以决定添加的事件处理程序是在捕获阶段还是冒泡阶段处理（我们一般为了浏览器兼容性都设置为冒泡阶段）<br>2.第一个参数意义不同，addEventListener第一个参数是事件类型（比如click，load），而attachEvent第一个参数指明的是事件处理函数名称（onclick，onload）<br>3.事件处理程序的作用域不相同，addEventListener的作用域是元素本身，this是指的触发元素，而attachEvent事件处理程序会在全局变量内运行，this是window<br>4.为一个事件添加多个事件处理程序时，执行顺序不同，addEventListener添加会按照添加顺序执行，而attachEvent添加多个事件处理程序时顺序无规律(添加的方法少的时候大多是按添加顺序的反顺序执行的，但是添加的多了就无规律了)</p>
+<h2 id="解释IE事件冒泡和DOM2事件传播机制？"><a href="#解释IE事件冒泡和DOM2事件传播机制？" class="headerlink" title="解释IE事件冒泡和DOM2事件传播机制？"></a>解释IE事件冒泡和DOM2事件传播机制？</h2><p>IE事件冒泡是指事件信息DOM树中接受事件的最下层开始向上传递直到根节点。DOM2事件传递机制是指先进行事件捕获后进行事件冒泡。事件信息从DOM根节点开始逐层下传到事件发生的目标元素，在达到目标元素后逐层冒泡上传至根节点</p>
+<h2 id="如何阻止事件冒泡？-如何阻止默认事件？"><a href="#如何阻止事件冒泡？-如何阻止默认事件？" class="headerlink" title="如何阻止事件冒泡？ 如何阻止默认事件？"></a>如何阻止事件冒泡？ 如何阻止默认事件？</h2><p>DOM浏览器：<br>在DOM2级事件监听的第二个参数即匿名函数内使用e.stopPropagation()<br>IE浏览器：<br>window.event.cancelBubble = true;//停止冒泡<br>window.event.returnValue = false;//阻止事件的默认行为</p>
 
       
     </div>
@@ -401,8 +396,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/浏览器兼容.html" rel="next" title="浏览器兼容">
-                <i class="fa fa-chevron-left"></i> 浏览器兼容
+              <a href="/2017/12/dom操作.html" rel="next" title="dom操作">
+                <i class="fa fa-chevron-left"></i> dom操作
               </a>
             
           </div>
@@ -410,10 +405,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/JS相关概念.html" rel="prev" title="JS相关概念">
-                JS相关概念 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -540,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#说一说你平时写代码遵守的编码规范"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x8BF4;&#x4E00;&#x8BF4;&#x4F60;&#x5E73;&#x65F6;&#x5199;&#x4EE3;&#x7801;&#x9075;&#x5B88;&#x7684;&#x7F16;&#x7801;&#x89C4;&#x8303;" class="headerlink" title="&#x8BF4;&#x4E00;&#x8BF4;&#x4F60;&#x5E73;&#x65F6;&#x5199;&#x4EE3;&#x7801;&#x9075;&#x5B88;&#x7684;&#x7F16;&#x7801;&#x89C4;&#x8303;"></a>&#x8BF4;&#x4E00;&#x8BF4;&#x4F60;&#x5E73;&#x65F6;&#x5199;&#x4EE3;&#x7801;&#x9075;&#x5B88;&#x7684;&#x7F16;&#x7801;&#x89C4;&#x8303;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垂直居中有几种实现方式，给出代码范例"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5782;&#x76F4;&#x5C45;&#x4E2D;&#x6709;&#x51E0;&#x79CD;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;&#x7ED9;&#x51FA;&#x4EE3;&#x7801;&#x8303;&#x4F8B;" class="headerlink" title="&#x5782;&#x76F4;&#x5C45;&#x4E2D;&#x6709;&#x51E0;&#x79CD;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;&#x7ED9;&#x51FA;&#x4EE3;&#x7801;&#x8303;&#x4F8B;"></a>&#x5782;&#x76F4;&#x5C45;&#x4E2D;&#x6709;&#x51E0;&#x79CD;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;&#x7ED9;&#x51FA;&#x4EE3;&#x7801;&#x8303;&#x4F8B;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM0-事件和DOM2级在事件监听使用方式上有什么区别？"><span class="nav-number">1.</span> <span class="nav-text"><a href="#DOM0-&#x4E8B;&#x4EF6;&#x548C;DOM2&#x7EA7;&#x5728;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x4E0A;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;" class="headerlink" title="DOM0 &#x4E8B;&#x4EF6;&#x548C;DOM2&#x7EA7;&#x5728;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x4E0A;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;"></a>DOM0 &#x4E8B;&#x4EF6;&#x548C;DOM2&#x7EA7;&#x5728;&#x4E8B;&#x4EF6;&#x76D1;&#x542C;&#x4F7F;&#x7528;&#x65B9;&#x5F0F;&#x4E0A;&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#attachEvent与addEventListener的区别？"><span class="nav-number">2.</span> <span class="nav-text"><a href="#attachEvent&#x4E0E;addEventListener&#x7684;&#x533A;&#x522B;&#xFF1F;" class="headerlink" title="attachEvent&#x4E0E;addEventListener&#x7684;&#x533A;&#x522B;&#xFF1F;"></a>attachEvent&#x4E0E;addEventListener&#x7684;&#x533A;&#x522B;&#xFF1F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解释IE事件冒泡和DOM2事件传播机制？"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x89E3;&#x91CA;IE&#x4E8B;&#x4EF6;&#x5192;&#x6CE1;&#x548C;DOM2&#x4E8B;&#x4EF6;&#x4F20;&#x64AD;&#x673A;&#x5236;&#xFF1F;" class="headerlink" title="&#x89E3;&#x91CA;IE&#x4E8B;&#x4EF6;&#x5192;&#x6CE1;&#x548C;DOM2&#x4E8B;&#x4EF6;&#x4F20;&#x64AD;&#x673A;&#x5236;&#xFF1F;"></a>&#x89E3;&#x91CA;IE&#x4E8B;&#x4EF6;&#x5192;&#x6CE1;&#x548C;DOM2&#x4E8B;&#x4EF6;&#x4F20;&#x64AD;&#x673A;&#x5236;&#xFF1F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何阻止事件冒泡？-如何阻止默认事件？"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x5982;&#x4F55;&#x963B;&#x6B62;&#x4E8B;&#x4EF6;&#x5192;&#x6CE1;&#xFF1F;-&#x5982;&#x4F55;&#x963B;&#x6B62;&#x9ED8;&#x8BA4;&#x4E8B;&#x4EF6;&#xFF1F;" class="headerlink" title="&#x5982;&#x4F55;&#x963B;&#x6B62;&#x4E8B;&#x4EF6;&#x5192;&#x6CE1;&#xFF1F; &#x5982;&#x4F55;&#x963B;&#x6B62;&#x9ED8;&#x8BA4;&#x4E8B;&#x4EF6;&#xFF1F;"></a>&#x5982;&#x4F55;&#x963B;&#x6B62;&#x4E8B;&#x4EF6;&#x5192;&#x6CE1;&#xFF1F; &#x5982;&#x4F55;&#x963B;&#x6B62;&#x9ED8;&#x8BA4;&#x4E8B;&#x4EF6;&#xFF1F;</span></a></li></ol></div>
             
 
           </div>
