@@ -88,20 +88,18 @@
 
 
 
-<meta name="description" content="什么是rem这个单位代表根元素的 font-size 大小（例如 &amp;lt;html&amp;gt; 元素的font-size）当用在根元素的font-size上面时 ，它代表了它的初始值(译者注:默认的初始值是html的默认的font-size大小,比如当未在根元素上面设置font-size大小的时候,此时的1rem==1em,当设置font-size=2rem的时候,就使得页面中1rem的大小相当于ht">
+<meta name="description" content="dom对象的innerText和innerHTML有什么区别？ innerText不包含文档结构，只会包含对象的文本内容 innerHTML包含文档结构，标签属性等信息  elem.children和elem.childNodes的区别？ elem.childNodes包含HTML节点，文本节点，属性节点 elem.children只包含子HTML节点  查询元素有几种常见的方法？ES5的元素选择">
 <meta name="keywords" content="技术博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="移动端利用动态rem实现自适应布局（一）">
-<meta property="og:url" content="http://yoursite.com/2017/12/移动端利用动态rem实现自适应布局.html">
+<meta property="og:title" content="dom操作">
+<meta property="og:url" content="http://yoursite.com/2017/12/dom操作.html">
 <meta property="og:site_name" content="Leioy">
-<meta property="og:description" content="什么是rem这个单位代表根元素的 font-size 大小（例如 &amp;lt;html&amp;gt; 元素的font-size）当用在根元素的font-size上面时 ，它代表了它的初始值(译者注:默认的初始值是html的默认的font-size大小,比如当未在根元素上面设置font-size大小的时候,此时的1rem==1em,当设置font-size=2rem的时候,就使得页面中1rem的大小相当于ht">
+<meta property="og:description" content="dom对象的innerText和innerHTML有什么区别？ innerText不包含文档结构，只会包含对象的文本内容 innerHTML包含文档结构，标签属性等信息  elem.children和elem.childNodes的区别？ elem.childNodes包含HTML节点，文本节点，属性节点 elem.children只包含子HTML节点  查询元素有几种常见的方法？ES5的元素选择">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/1.png">
-<meta property="og:updated_time" content="2017-12-07T13:39:16.215Z">
+<meta property="og:updated_time" content="2017-12-15T15:44:41.086Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="移动端利用动态rem实现自适应布局（一）">
-<meta name="twitter:description" content="什么是rem这个单位代表根元素的 font-size 大小（例如 &amp;lt;html&amp;gt; 元素的font-size）当用在根元素的font-size上面时 ，它代表了它的初始值(译者注:默认的初始值是html的默认的font-size大小,比如当未在根元素上面设置font-size大小的时候,此时的1rem==1em,当设置font-size=2rem的时候,就使得页面中1rem的大小相当于ht">
-<meta name="twitter:image" content="http://yoursite.com/images/1.png">
+<meta name="twitter:title" content="dom操作">
+<meta name="twitter:description" content="dom对象的innerText和innerHTML有什么区别？ innerText不包含文档结构，只会包含对象的文本内容 innerHTML包含文档结构，标签属性等信息  elem.children和elem.childNodes的区别？ elem.childNodes包含HTML节点，文本节点，属性节点 elem.children只包含子HTML节点  查询元素有几种常见的方法？ES5的元素选择">
 
 
 
@@ -129,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/12/移动端利用动态rem实现自适应布局.html"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/dom操作.html"/>
 
 
 
 
 
-  <title> 移动端利用动态rem实现自适应布局（一） | Leioy </title>
+  <title> dom操作 | Leioy </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -281,7 +279,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/移动端利用动态rem实现自适应布局.html">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/dom操作.html">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Leioy">
@@ -305,7 +303,7 @@
             
             
               
-                移动端利用动态rem实现自适应布局（一）
+                dom操作
               
             
           </h2>
@@ -320,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-07T20:12:51+08:00">
-                2017-12-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-11T18:46:38+08:00">
+                2017-12-11
               </time>
             
 
@@ -359,14 +357,41 @@
       
 
       
-        <h2 id="什么是rem"><a href="#什么是rem" class="headerlink" title="什么是rem"></a>什么是rem</h2><p>这个单位代表根元素的 font-size 大小（例如 <code>&lt;html&gt;</code> 元素的font-size）当用在根元素的font-size上面时 ，它代表了它的初始值(译者注:默认的初始值是html的默认的font-size大小,比如当未在根元素上面设置font-size大小的时候,此时的1rem==1em,当设置font-size=2rem的时候,就使得页面中1rem的大小相当于html的根字体默认大小的2倍,当然此时页面中字体的大小也是html的根字体默认大小的2倍)。</p>
-<p>自适应的精髓就是让盒子的大小，间距等与视窗的大小相关。如何用rem做到这一点？我们可以通过js来获取视窗的宽度，然后给html一个font-size值，让两者关联起来</p>
-<p>有这样一个需求。有四个div盒子，每个盒子的宽度是高度的两倍，盒子中间的间距是周围间距的两倍，效果如下。并且在不同屏幕宽度小都能呈现出相同的效果<br>  <img src="/images/1.png" alt=""></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pageWidth = <span class="built_in">window</span>.innerWidth</span><br><span class="line">    <span class="built_in">document</span>.write(<span class="string">`&lt;style&gt;html&#123;font-size:<span class="subst">$&#123;pageWidth<span class="regexp">/10&#125;px;&#125;&lt;/</span>style&gt;<span class="string">`)</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">   &lt;/script&gt;</span></span></span></span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>box1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>box2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>box3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span>box4<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">clear</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">clear</span>: both; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">4rem</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">2rem</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0.5rem</span> <span class="number">0.5rem</span>;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#8e8585</span>; &#125;</span><br></pre></td></tr></table></figure>
-<p>这样有一个问题，我每次都要计算才能得到给多少rem值，这样很麻烦。我们可以通多scss里面的函数解决这个问题。<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">@function px2rem(<span class="variable">$px</span>)&#123;</span><br><span class="line">    @return <span class="variable">$px</span>/<span class="variable">$designWidth</span> *<span class="number">10</span>+ rem</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$designWidth</span> : 320;</span><br><span class="line">* &#123;<span class="attribute">margin</span>: <span class="number">0</span>;<span class="attribute">padding</span>: <span class="number">0</span>;<span class="attribute">box-sizing</span>: border-box;&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">font-size</span>: <span class="number">16px</span>;&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">clear</span>::after&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.child</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: px2rem(<span class="number">128</span>);</span><br><span class="line">    <span class="attribute">height</span>: px2rem(<span class="number">64</span>);</span><br><span class="line">    <span class="attribute">margin</span>:  px2rem(<span class="number">16</span>) px2rem(<span class="number">16</span>);</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#8e8585</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>结尾：这只是一个简单的利用动态rem实现自适应的思路，更多的细节，需要持续关注。附上一篇大漠老师的文章<a href="https://www.w3cplus.com/mobile/lib-flexible-for-html5-layout.html" target="_blank" rel="noopener">使用Flexible实现手淘H5页面的终端适配</a></p>
+        <h2 id="dom对象的innerText和innerHTML有什么区别？"><a href="#dom对象的innerText和innerHTML有什么区别？" class="headerlink" title="dom对象的innerText和innerHTML有什么区别？"></a>dom对象的innerText和innerHTML有什么区别？</h2><ul>
+<li>innerText不包含文档结构，只会包含对象的文本内容</li>
+<li>innerHTML包含文档结构，标签属性等信息</li>
+</ul>
+<h2 id="elem-children和elem-childNodes的区别？"><a href="#elem-children和elem-childNodes的区别？" class="headerlink" title="elem.children和elem.childNodes的区别？"></a>elem.children和elem.childNodes的区别？</h2><ul>
+<li>elem.childNodes包含HTML节点，文本节点，属性节点</li>
+<li>elem.children只包含子HTML节点</li>
+</ul>
+<h2 id="查询元素有几种常见的方法？ES5的元素选择方法是什么"><a href="#查询元素有几种常见的方法？ES5的元素选择方法是什么" class="headerlink" title="查询元素有几种常见的方法？ES5的元素选择方法是什么?"></a>查询元素有几种常见的方法？ES5的元素选择方法是什么?</h2><p>DOM0查询元素方法：</p>
+<ul>
+<li>document.getElementById(‘id’)</li>
+<li>document.getElementsByTagName(‘tagName’)</li>
+<li>document.getElementsByClassName(‘className’)</li>
+</ul>
+<p>DOM3(ES5)查询元素方法</p>
+<ul>
+<li>document.querySelector(‘cssQuerySelector’)</li>
+</ul>
+<h2 id="如何创建一个元素？如何给元素设置属性？如何删除属性"><a href="#如何创建一个元素？如何给元素设置属性？如何删除属性" class="headerlink" title="如何创建一个元素？如何给元素设置属性？如何删除属性"></a>如何创建一个元素？如何给元素设置属性？如何删除属性</h2><p>创建元素：</p>
+<ul>
+<li>createElement方法用来生成HTML元素节点。</li>
+<li>createTextNode方法用来生成文本节点，参数为所要生成的文本节点的内容。</li>
+<li>createDocumentFragment方法生成一个DocumentFragment对象。</li>
+</ul>
+<p>setAttribute()方法用于设置元素属性；removeAttribute()用于删除元素属性</p>
+<h2 id="如何给页面元素添加子元素？如何删除页面元素下的子元素"><a href="#如何给页面元素添加子元素？如何删除页面元素下的子元素" class="headerlink" title="如何给页面元素添加子元素？如何删除页面元素下的子元素?"></a>如何给页面元素添加子元素？如何删除页面元素下的子元素?</h2><h3 id="创建元素"><a href="#创建元素" class="headerlink" title="创建元素"></a>创建元素</h3><p>createElement，用来生成HTML元素节点。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newDiv = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>createTextNode，用来生成文本节点，参数为所要生成的文本节点的内容。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newDiv = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>)</span><br><span class="line"><span class="keyword">var</span> newContent = <span class="built_in">document</span>.createTextNode(<span class="string">"Hello"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>createDocumentFragment,用来生成一个DocumentFragment对象。<br>DocumentFragment对象是一个存在于内存的DOM片段，但是不属于当前文档，常常用来生成较复杂的DOM结构，然后插入当前文档。这样做的好处在于，因为DocumentFragment不属于当前文档，对它的任何改动，都不会引发网页的重新渲染，比直接修改当前文档的DOM有更好的性能表现。</p>
+<h3 id="修改元素"><a href="#修改元素" class="headerlink" title="修改元素"></a>修改元素</h3><p>appendChild,在元素末尾添加元素<br>insertBefore，在某个元素之前插入元素<br>replaceChild，replaceChild()接受两个参数：要插入的元素和要替换的元素<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newDiv.replaceChild(newElement, oldElement)</span><br></pre></td></tr></table></figure></p>
+<h3 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parentNode.removeChild(childNode)</span><br></pre></td></tr></table></figure>
+<h3 id="clone元素"><a href="#clone元素" class="headerlink" title="clone元素"></a>clone元素</h3><p>cloneNode()方法用于克隆元素，方法有一个布尔值参数，传入true的时候会深复制，也就是会复制元素及其子元素（IE还会复制其事件），false的时候只复制元素本身</p>
+<h2 id="属性操作"><a href="#属性操作" class="headerlink" title="属性操作"></a>属性操作</h2><p>getAttribute()用于获取元素的attribute值<br>createAttribute()方法生成一个新的属性对象节点，并返回它。<br>setAttribute()方法用于设置元素属性<br>removeAttribute()用于删除元素属性</p>
+<p>上面的方法做的事情也可以通过类操作数组属性element.attributes来实现</p>
+<h2 id="location属性"><a href="#location属性" class="headerlink" title="location属性"></a>location属性</h2><p>location属性返回一个只读对象，提供了当前文档的URL信息<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假定当前网址为http://www.example.com:4097/path/a.html?x=111#part1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.location.href <span class="comment">// "http://www.example.com:4097/path/a.html?x=111#part1"</span></span><br><span class="line"><span class="built_in">document</span>.location.protocol <span class="comment">// "http:"</span></span><br><span class="line"><span class="built_in">document</span>.location.host <span class="comment">// "www.example.com:4097"</span></span><br><span class="line"><span class="built_in">document</span>.location.hostname <span class="comment">// "www.example.com"</span></span><br><span class="line"><span class="built_in">document</span>.location.port <span class="comment">// "4097"</span></span><br><span class="line"><span class="built_in">document</span>.location.pathname <span class="comment">// "/path/a.html"</span></span><br><span class="line"><span class="built_in">document</span>.location.search <span class="comment">// "?x=111"</span></span><br><span class="line"><span class="built_in">document</span>.location.hash <span class="comment">// "#part1"</span></span><br><span class="line"><span class="built_in">document</span>.location.origin <span class="comment">//http://www.example.com:4097</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 跳转到另一个网址</span></span><br><span class="line"><span class="built_in">document</span>.location.assign(<span class="string">'http://www.google.com'</span>)</span><br><span class="line"><span class="comment">// 优先从服务器重新加载</span></span><br><span class="line"><span class="built_in">document</span>.location.reload(<span class="literal">true</span>)</span><br><span class="line"><span class="comment">// 优先从本地缓存重新加载（默认值）</span></span><br><span class="line"><span class="built_in">document</span>.location.reload(<span class="literal">false</span>)</span><br><span class="line"><span class="comment">// 跳转到另一个网址，但当前文档不保留在history对象中，即无法用后退按钮，回到当前文档</span></span><br><span class="line"><span class="built_in">document</span>.location.replace(<span class="string">'http://www.baidu.com'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//虽然location属性返回的对象是只读的，但是可以将URL赋值给这个属性，网页就会自动跳转到指定网址。</span></span><br><span class="line"><span class="built_in">document</span>.location = <span class="string">'http://www.example.com'</span>&lt;===&gt;  <span class="built_in">document</span>.location.href = <span class="string">'http://www.example.com'</span></span><br></pre></td></tr></table></figure></p>
+<p><a href="https://www.cnblogs.com/lrzw32/p/5008913.html#_label1" target="_blank" rel="noopener">dom常用API总结</a></p>
 
       
     </div>
@@ -401,8 +426,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/HTML知识.html" rel="next" title="HTML知识">
-                <i class="fa fa-chevron-left"></i> HTML知识
+              <a href="/2017/12/引用类型对象拷贝.html" rel="next" title="引用类型对象拷贝">
+                <i class="fa fa-chevron-left"></i> 引用类型对象拷贝
               </a>
             
           </div>
@@ -410,10 +435,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/form表单.html" rel="prev" title="form表单">
-                form表单 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -540,7 +561,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是rem"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x4EC0;&#x4E48;&#x662F;rem" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;rem"></a>&#x4EC0;&#x4E48;&#x662F;rem</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#dom对象的innerText和innerHTML有什么区别？"><span class="nav-number">1.</span> <span class="nav-text"><a href="#dom&#x5BF9;&#x8C61;&#x7684;innerText&#x548C;innerHTML&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;" class="headerlink" title="dom&#x5BF9;&#x8C61;&#x7684;innerText&#x548C;innerHTML&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;"></a>dom&#x5BF9;&#x8C61;&#x7684;innerText&#x548C;innerHTML&#x6709;&#x4EC0;&#x4E48;&#x533A;&#x522B;&#xFF1F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#elem-children和elem-childNodes的区别？"><span class="nav-number">2.</span> <span class="nav-text"><a href="#elem-children&#x548C;elem-childNodes&#x7684;&#x533A;&#x522B;&#xFF1F;" class="headerlink" title="elem.children&#x548C;elem.childNodes&#x7684;&#x533A;&#x522B;&#xFF1F;"></a>elem.children&#x548C;elem.childNodes&#x7684;&#x533A;&#x522B;&#xFF1F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询元素有几种常见的方法？ES5的元素选择方法是什么"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x67E5;&#x8BE2;&#x5143;&#x7D20;&#x6709;&#x51E0;&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x65B9;&#x6CD5;&#xFF1F;ES5&#x7684;&#x5143;&#x7D20;&#x9009;&#x62E9;&#x65B9;&#x6CD5;&#x662F;&#x4EC0;&#x4E48;" class="headerlink" title="&#x67E5;&#x8BE2;&#x5143;&#x7D20;&#x6709;&#x51E0;&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x65B9;&#x6CD5;&#xFF1F;ES5&#x7684;&#x5143;&#x7D20;&#x9009;&#x62E9;&#x65B9;&#x6CD5;&#x662F;&#x4EC0;&#x4E48;?"></a>&#x67E5;&#x8BE2;&#x5143;&#x7D20;&#x6709;&#x51E0;&#x79CD;&#x5E38;&#x89C1;&#x7684;&#x65B9;&#x6CD5;&#xFF1F;ES5&#x7684;&#x5143;&#x7D20;&#x9009;&#x62E9;&#x65B9;&#x6CD5;&#x662F;&#x4EC0;&#x4E48;?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何创建一个元素？如何给元素设置属性？如何删除属性"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x5982;&#x4F55;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF1F;&#x5982;&#x4F55;&#x7ED9;&#x5143;&#x7D20;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;&#xFF1F;&#x5982;&#x4F55;&#x5220;&#x9664;&#x5C5E;&#x6027;" class="headerlink" title="&#x5982;&#x4F55;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF1F;&#x5982;&#x4F55;&#x7ED9;&#x5143;&#x7D20;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;&#xFF1F;&#x5982;&#x4F55;&#x5220;&#x9664;&#x5C5E;&#x6027;"></a>&#x5982;&#x4F55;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF1F;&#x5982;&#x4F55;&#x7ED9;&#x5143;&#x7D20;&#x8BBE;&#x7F6E;&#x5C5E;&#x6027;&#xFF1F;&#x5982;&#x4F55;&#x5220;&#x9664;&#x5C5E;&#x6027;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何给页面元素添加子元素？如何删除页面元素下的子元素"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x5982;&#x4F55;&#x7ED9;&#x9875;&#x9762;&#x5143;&#x7D20;&#x6DFB;&#x52A0;&#x5B50;&#x5143;&#x7D20;&#xFF1F;&#x5982;&#x4F55;&#x5220;&#x9664;&#x9875;&#x9762;&#x5143;&#x7D20;&#x4E0B;&#x7684;&#x5B50;&#x5143;&#x7D20;" class="headerlink" title="&#x5982;&#x4F55;&#x7ED9;&#x9875;&#x9762;&#x5143;&#x7D20;&#x6DFB;&#x52A0;&#x5B50;&#x5143;&#x7D20;&#xFF1F;&#x5982;&#x4F55;&#x5220;&#x9664;&#x9875;&#x9762;&#x5143;&#x7D20;&#x4E0B;&#x7684;&#x5B50;&#x5143;&#x7D20;?"></a>&#x5982;&#x4F55;&#x7ED9;&#x9875;&#x9762;&#x5143;&#x7D20;&#x6DFB;&#x52A0;&#x5B50;&#x5143;&#x7D20;&#xFF1F;&#x5982;&#x4F55;&#x5220;&#x9664;&#x9875;&#x9762;&#x5143;&#x7D20;&#x4E0B;&#x7684;&#x5B50;&#x5143;&#x7D20;?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建元素"><span class="nav-number">5.1.</span> <span class="nav-text"><a href="#&#x521B;&#x5EFA;&#x5143;&#x7D20;" class="headerlink" title="&#x521B;&#x5EFA;&#x5143;&#x7D20;"></a>&#x521B;&#x5EFA;&#x5143;&#x7D20;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改元素"><span class="nav-number">5.2.</span> <span class="nav-text"><a href="#&#x4FEE;&#x6539;&#x5143;&#x7D20;" class="headerlink" title="&#x4FEE;&#x6539;&#x5143;&#x7D20;"></a>&#x4FEE;&#x6539;&#x5143;&#x7D20;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除元素"><span class="nav-number">5.3.</span> <span class="nav-text"><a href="#&#x5220;&#x9664;&#x5143;&#x7D20;" class="headerlink" title="&#x5220;&#x9664;&#x5143;&#x7D20;"></a>&#x5220;&#x9664;&#x5143;&#x7D20;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clone元素"><span class="nav-number">5.4.</span> <span class="nav-text"><a href="#clone&#x5143;&#x7D20;" class="headerlink" title="clone&#x5143;&#x7D20;"></a>clone&#x5143;&#x7D20;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性操作"><span class="nav-number">6.</span> <span class="nav-text"><a href="#&#x5C5E;&#x6027;&#x64CD;&#x4F5C;" class="headerlink" title="&#x5C5E;&#x6027;&#x64CD;&#x4F5C;"></a>&#x5C5E;&#x6027;&#x64CD;&#x4F5C;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#location属性"><span class="nav-number">7.</span> <span class="nav-text"><a href="#location&#x5C5E;&#x6027;" class="headerlink" title="location&#x5C5E;&#x6027;"></a>location&#x5C5E;&#x6027;</span></a></li></ol></div>
             
 
           </div>
