@@ -72,7 +72,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="技术博客," />
+  <meta name="keywords" content="css," />
 
 
 
@@ -89,14 +89,14 @@
 
 
 <meta name="description" content="浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响?特征：浮动元素会脱离正常的文档流，按照其外边距指定的位置相对于它的上一个块级元素（或父元素）显示浮动元素后面的块级元素的内容会向此浮动元素的外边距靠齐，但是边框和背景却忽略浮动元素而向上一个任意非浮动元素靠齐浮动元素后面的内联元素会向此浮动元素的外边距靠齐 float造成的影响：对其父元素的影响对于其父元素来说，元素浮动之后">
-<meta name="keywords" content="技术博客">
+<meta name="keywords" content="css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浮动定位BFC边距合并">
 <meta property="og:url" content="http://yoursite.com/2017/12/浮动定位BFC边距合并.html">
 <meta property="og:site_name" content="Leioy">
 <meta property="og:description" content="浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响?特征：浮动元素会脱离正常的文档流，按照其外边距指定的位置相对于它的上一个块级元素（或父元素）显示浮动元素后面的块级元素的内容会向此浮动元素的外边距靠齐，但是边框和背景却忽略浮动元素而向上一个任意非浮动元素靠齐浮动元素后面的内联元素会向此浮动元素的外边距靠齐 float造成的影响：对其父元素的影响对于其父元素来说，元素浮动之后">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-08T18:48:46.886Z">
+<meta property="og:updated_time" content="2017-12-17T22:04:49.813Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浮动定位BFC边距合并">
 <meta name="twitter:description" content="浮动元素有什么特征？对父容器、其他浮动元素、普通元素、文字分别有什么影响?特征：浮动元素会脱离正常的文档流，按照其外边距指定的位置相对于它的上一个块级元素（或父元素）显示浮动元素后面的块级元素的内容会向此浮动元素的外边距靠齐，但是边框和背景却忽略浮动元素而向上一个任意非浮动元素靠齐浮动元素后面的内联元素会向此浮动元素的外边距靠齐 float造成的影响：对其父元素的影响对于其父元素来说，元素浮动之后">
@@ -194,6 +194,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
           </a>
         </li>
       
@@ -329,6 +339,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -421,7 +453,7 @@
   
         <div class="post-tags">
           
-            <a href="/tags/技术博客/" rel="tag"><i class="fa fa-tag"></i> 技术博客</a>
+            <a href="/tags/css/" rel="tag"><i class="fa fa-tag"></i> css</a>
           
         </div>
       
@@ -494,6 +526,8 @@
     </div>
   </div>
 
+
+
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
@@ -530,11 +564,18 @@
           
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
