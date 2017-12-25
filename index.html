@@ -286,6 +286,174 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/scss学习.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Leioy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Leioy">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Leioy" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/12/scss学习.html" itemprop="url">
+                  scss学习
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-26T04:52:50+08:00">
+                2017-12-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+ 
+        
+
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="scss中的继承-extend"><a href="#scss中的继承-extend" class="headerlink" title="scss中的继承(@extend)"></a>scss中的继承(@extend)</h2><p>在SASS的继承是把一个选择器的所有样式继承到另一个选择器上，在继承另一个选择器的样式时需要使用@extend开始，后面紧跟被继承的选择器</p>
+<p>比较下这两段代码的区别<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*style.scss*/</span></span><br><span class="line"><span class="selector-class">.block</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  @<span class="keyword">extend</span> .block;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#eee</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ul</span>,<span class="selector-tag">ol</span> &#123;</span><br><span class="line">  @<span class="keyword">extend</span> .block;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line">  <span class="attribute">text-transform</span>: uppercase;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*编译后的结果*/</span></span><br><span class="line"><span class="comment">/*style.css*/</span></span><br><span class="line"><span class="selector-class">.block</span>, <span class="selector-tag">p</span>, <span class="selector-tag">ul</span>, <span class="selector-tag">ol</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">2px</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#eee</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">ul</span>, <span class="selector-tag">ol</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line">  <span class="attribute">text-transform</span>: uppercase; &#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*style.scss*/</span></span><br><span class="line">%block &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  @<span class="keyword">extend</span> %block;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#eee</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ul</span>,<span class="selector-tag">ol</span> &#123;</span><br><span class="line">  @<span class="keyword">extend</span> %block;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line">  <span class="attribute">text-transform</span>: uppercase;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*编译后的结果*/</span></span><br><span class="line"><span class="comment">/*style.css*/</span></span><br><span class="line"><span class="selector-tag">p</span>, <span class="selector-tag">ul</span>, <span class="selector-tag">ol</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">2px</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#eee</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">ul</span>, <span class="selector-tag">ol</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#333</span>;</span><br><span class="line">  <span class="attribute">text-transform</span>: uppercase; &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="混合-mixin"><a href="#混合-mixin" class="headerlink" title="混合(@mixin)"></a>混合(@mixin)</h2><p>Mixins是SASS最出名特色之一。他充许我们通过:的方式将相同的样式风格定义成一个模块，然后在需要使用的地方通过@include将@mixin定义好的模块调用进来<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">mixin</span> Mixins名称(参数:参数值) &#123;</span><br><span class="line">  <span class="comment">/*公用样式*/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  @<span class="keyword">include</span> Mixins名称(参数值)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="嵌套的缺点"><a href="#嵌套的缺点" class="headerlink" title="嵌套的缺点"></a>嵌套的缺点</h2><p>只要你的SASS嵌套的越深，那么编译出来的CSS的选择器就会层级越深。这样一来并不是好事，也不是我们想要的干净代码，换句话来说，直接违背了我们使用SASS的初衷。更重要的是，SASS的嵌套编译出来的CSS，直接会影响页面的性能。</p>
+<h2 id="Mixin的缺点"><a href="#Mixin的缺点" class="headerlink" title="Mixin的缺点"></a>Mixin的缺点</h2><p>来看一个定义圆角的例子<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*style.scss*/</span></span><br><span class="line">@<span class="keyword">mixin</span> rounded &#123;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">button</span> &#123;</span><br><span class="line">  @<span class="keyword">include</span> rounded;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#ccc</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#222</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.simple-form</span> <span class="selector-tag">input</span> &#123;</span><br><span class="line">  @<span class="keyword">include</span> rounded;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.main-nav</span> <span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="selector-tag">a</span>:hover,</span><br><span class="line">  <span class="selector-tag">a</span>:active &#123;</span><br><span class="line">    @<span class="keyword">include</span> rounded;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*编译后的代码，这里是我格式化后的，方便阅读*/</span></span><br><span class="line"><span class="comment">/*style.css*/</span></span><br><span class="line"><span class="selector-tag">button</span> &#123;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#ccc</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#222</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.simple-form</span> <span class="selector-tag">input</span> &#123;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.main-nav</span> <span class="selector-class">.item</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.main-nav</span> <span class="selector-class">.item</span> <span class="selector-tag">a</span>:hover,</span><br><span class="line"><span class="selector-class">.main-nav</span> <span class="selector-class">.item</span> <span class="selector-tag">a</span>:active &#123;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>很明显更这样不够好，border-radius被重复输出了<br>Mixin的黄金规则就是将相似的风格定义在一个@mixin中，另外Mixins主要是用于重用，而不是用来制定具体属性的值。换句话说，如果创建的Mixins没有传参数，那么就是一种错误的使用方式。<br>正确的使用方式<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">mixin</span> rounded(<span class="variable">$radius</span>:<span class="number">5px</span>) &#123; <span class="comment">/*这里给了参数一个默认值*/</span></span><br><span class="line">  -webkit-<span class="attribute">border-radius</span>: <span class="variable">$radius</span>; </span><br><span class="line">  -moz-<span class="attribute">border-radius</span>: <span class="variable">$radius</span>; </span><br><span class="line">  -o-<span class="attribute">border-radius</span>: <span class="variable">$radius</span>; </span><br><span class="line">  -ms-<span class="attribute">border-radius</span>: <span class="variable">$radius</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="variable">$radius</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="继承的缺点"><a href="#继承的缺点" class="headerlink" title="继承的缺点"></a>继承的缺点</h2><p>sass的继承可以将相同样式的规则定义在一个类中，然后能通过@extend来调用。这样可以把相同的样式合并在一起<br>我们试着把上面的@mixin rounde 替换成.rounded</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*style.scss*/</span></span><br><span class="line"><span class="selector-class">.rounded</span> &#123;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">button</span> &#123;</span><br><span class="line">  @<span class="keyword">extend</span> .rounded;</span><br><span class="line">  <span class="attribute">background</span>: <span class="number">#ccc</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#222</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.simple-form</span> <span class="selector-tag">input</span> &#123;</span><br><span class="line">  @<span class="keyword">extend</span> .rounded;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.main-nav</span> <span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="selector-tag">a</span>:hover,</span><br><span class="line">  <span class="selector-tag">a</span>:active &#123;</span><br><span class="line">    @<span class="keyword">extend</span> .rounded;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*编译后的代码*/</span></span><br><span class="line"><span class="comment">/*style.css*/</span></span><br><span class="line"><span class="selector-class">.rounded</span>,</span><br><span class="line"><span class="selector-tag">button</span>,</span><br><span class="line"><span class="selector-class">.simple-form</span> <span class="selector-tag">input</span>,</span><br><span class="line"><span class="selector-class">.main-nav</span> <span class="selector-class">.item</span> <span class="selector-tag">a</span>:hover,</span><br><span class="line"><span class="selector-class">.main-nav</span> <span class="selector-class">.item</span> <span class="selector-tag">a</span>:active &#123;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">button</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#ccc</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#222</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.main-nav</span> <span class="selector-class">.item</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到代码清爽多了，这样可以解决@mixin致使样式多次重复出现的问题。但是@extend也有它的缺点,我们来看个例子<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">background</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.sidebar</span> <span class="selector-class">.signup</span> <span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.registrantion</span>,</span><br><span class="line"><span class="selector-class">.remember-password</span> &#123;</span><br><span class="line">  <span class="selector-class">.button</span> &#123;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">33px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.edit-account</span> <span class="selector-class">.delete-area</span> <span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line">  <span class="attribute">color</span>: white;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.article</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  @<span class="keyword">extend</span> .button</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>期待编译后的代码是这样的<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.button</span> <span class="selector-class">.article</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">background</span>: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>实际编译出来的代码是这样的<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.button</span>, <span class="selector-class">.article</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">background</span>: green; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.sidebar</span> <span class="selector-class">.signup</span> <span class="selector-class">.button</span>, <span class="selector-class">.sidebar</span> <span class="selector-class">.signup</span> <span class="selector-class">.article</span> <span class="selector-tag">a</span>, <span class="selector-class">.article</span> <span class="selector-class">.sidebar</span> <span class="selector-class">.signup</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">20px</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.registrantion</span> <span class="selector-class">.button</span>, <span class="selector-class">.registrantion</span> <span class="selector-class">.article</span> <span class="selector-tag">a</span>, <span class="selector-class">.article</span> <span class="selector-class">.registrantion</span> <span class="selector-tag">a</span>,</span><br><span class="line"><span class="selector-class">.remember-password</span> <span class="selector-class">.button</span>,</span><br><span class="line"><span class="selector-class">.remember-password</span> <span class="selector-class">.article</span> <span class="selector-tag">a</span>,</span><br><span class="line"><span class="selector-class">.article</span> <span class="selector-class">.remember-password</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">33px</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.edit-account</span> <span class="selector-class">.delete-area</span> <span class="selector-class">.button</span>, <span class="selector-class">.edit-account</span> <span class="selector-class">.delete-area</span> <span class="selector-class">.article</span> <span class="selector-tag">a</span>, <span class="selector-class">.article</span> <span class="selector-class">.edit-account</span> <span class="selector-class">.delete-area</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line">  <span class="attribute">color</span>: white; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>oh mygod!为什么是这样？<br>.button类名可能用在不同处，有不同的容器包裹着，然而sass中的@extend无法判断引用哪个地方的.button，所以将不同地方的.button类名都引用了进来。这说明在使用继承时，你有足够的自信@extend的类名是唯一的</p>
+<h2 id="强大的’-’"><a href="#强大的’-’" class="headerlink" title="强大的’%’"></a>强大的’%’</h2><p>%只是一个占位符，只要不通过@extend调用，不会产生任何的代码。<br>把上面的代码改成<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*style.scss*/</span></span><br><span class="line">%<span class="selector-tag">button</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">background</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.sidebar</span> <span class="selector-class">.signup</span> <span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.registrantion</span>,</span><br><span class="line"><span class="selector-class">.remember-password</span> &#123;</span><br><span class="line">  <span class="selector-class">.button</span> &#123;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">33px</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.edit-account</span> <span class="selector-class">.delete-area</span> <span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line">  <span class="attribute">color</span>: white;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.article</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  @<span class="keyword">extend</span> %button;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*style.css*/</span></span><br><span class="line"><span class="selector-class">.article</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">background</span>: green; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.sidebar</span> <span class="selector-class">.signup</span> <span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">20px</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.registrantion</span> <span class="selector-class">.button</span>,</span><br><span class="line"><span class="selector-class">.remember-password</span> <span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">33px</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.edit-account</span> <span class="selector-class">.delete-area</span> <span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: red;</span><br><span class="line">  <span class="attribute">color</span>: white; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样就得到了想要的结果</p>
+<h2 id="混合和继承的区别"><a href="#混合和继承的区别" class="headerlink" title="混合和继承的区别"></a>混合和继承的区别</h2><ul>
+<li>@include主要是来调用@mixin定义的函数模块。在@mixin中可以定义一个相似功能样式，可以设置变量、定义参数、设置默认参数</li>
+<li>@extend主要是来调用.class或%placeholders定义的模块，在.class或%placeholders中可以定义一个相同的样式，但是不能定义参数</li>
+<li>@include每次调用相同的@mixin时，编译出来的css相同样式不会合并</li>
+<li>@extend每次调用.class时，如果.class在样式出现多次，那么编译出来的可能不是需要的样式</li>
+<li>@extend每次调用%placeholders时，编译出来的css相同样式会合并</li>
+</ul>
+<h2 id="Mixins与-placeholders的结合"><a href="#Mixins与-placeholders的结合" class="headerlink" title="Mixins与%placeholders的结合"></a>Mixins与%placeholders的结合</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">%grid &#123;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">padding-right</span>: <span class="number">1em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">mixin</span> grid(<span class="variable">$width</span>: 1) &#123;</span><br><span class="line">  @<span class="keyword">extend</span> %grid;</span><br><span class="line">  <span class="attribute">width</span>: percentage(<span class="variable">$width</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码在编译是并不会产生任何代码，除非调用这个mixin函数<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.grid-half</span> &#123;</span><br><span class="line">  @<span class="keyword">include</span> grid(<span class="number">1</span> /<span class="number">2</span> );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*编译后的代码*/</span></span><br><span class="line"><span class="selector-class">.grid-half</span> &#123;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">padding-right</span>: <span class="number">1em</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.grid-half</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">50%</span>; &#125;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+  
+
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+         
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/性能优化之css.html">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1920,180 +2088,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/JS相关概念.html">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Leioy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Leioy">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Leioy" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/12/JS相关概念.html" itemprop="url">
-                  JS相关概念
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-09T21:14:50+08:00">
-                2017-12-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
- 
-        
-
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="CSS和JS在网页中的放置顺序是怎样的？"><a href="#CSS和JS在网页中的放置顺序是怎样的？" class="headerlink" title="CSS和JS在网页中的放置顺序是怎样的？"></a>CSS和JS在网页中的放置顺序是怎样的？</h2><p>为了防止白屏与FOUC，CSS应放置于head标签内。<br>为防止JS阻塞加载，JS应放置于body标签末尾。</p>
-<h2 id="简述网页的渲染机制"><a href="#简述网页的渲染机制" class="headerlink" title="简述网页的渲染机制"></a>简述网页的渲染机制</h2><ol>
-<li>构建DOM树(DOM tree)：从上到下解析HTML文档生成DOM节点树（DOM tree），也叫内容树（content tree）</li>
-<li>构建CSSOM(CSS Object Model)树：加载解析样式生成CSSOM树</li>
-<li>执行JavaScript：加载并执行JavaScript代码（包括内联代码或外联JavaScript文件）</li>
-<li>构建渲染树(render tree)：根据DOM树和CSSOM树,生成渲染树(render tree)</li>
-<li>布局（layout）：根据渲染树将节点树的每一个节点布局在屏幕上的正确位置</li>
-<li>绘制（painting）：遍历渲染树绘制所有节点，为每一个节点适用对应的样式，这一过程是通过UI后端模块完成</li>
-</ol>
-<p><a href="http://blog.csdn.net/buzhibujuell/article/details/68952370" target="_blank" rel="noopener">相关文章</a></p>
-<h2 id="白屏和FOUC"><a href="#白屏和FOUC" class="headerlink" title="白屏和FOUC"></a>白屏和FOUC</h2><h3 id="白屏"><a href="#白屏" class="headerlink" title="白屏"></a>白屏</h3><p>浏览器的渲染需要先构建 DOM 和 CSSOM 树，假如 CSS 获取时间过长，就会导致 CSSOM 生成过久，浏览器只能等待，这时候就会出现长时间白屏，直到 DOM 和 CSSOM 构建完成。通常打开页面都会短暂白屏，因为 DOM 和 CSSOM 构建需要时间。</p>
-<p>导致白屏的原因：</p>
-<ol>
-<li>如果把样式放在底部,对于IE浏览器,由于DOM树过大，浏览器解析HTML文件时间过长但却没有解析CSS文件，在某些场景下(新窗口打开,刷新等)页面会出现白屏,而不是内容逐步展现</li>
-<li>如果使用 @import 标签,即使 CSS 放入 link, 并且放在头部,也可能出现白屏</li>
-<li>脚本会阻塞后面内容的呈现及其后组件的下载。对于图片和CSS, 在加载时会并发加载(如一个域名下同时加载两个文件). 但在加载 JavaScript 时,会禁用并发,并且阻止其他内容的下载. 所以把 JavaScript 放入页面顶部也会导致 白屏 现象</li>
-</ol>
-<h3 id="FOUC（Flash-of-Unstyled-Content-无样式内容闪烁）"><a href="#FOUC（Flash-of-Unstyled-Content-无样式内容闪烁）" class="headerlink" title="FOUC（Flash of Unstyled Content 无样式内容闪烁）"></a>FOUC（Flash of Unstyled Content 无样式内容闪烁）</h3><ol>
-<li>如果把样式放在底部,对于IE浏览器,在某些场景下(点击链接,输入URL,使用书签进入等),会出现 FOUC 现象(逐步加载无样式的内容,等CSS加载后页面突然展现样式).对于 Firefox 会一直表现出 FOUC</li>
-<li>Firefox浏览器经常出现FOUC现象与其渲染方式有关，Firefox在生成DOM后，将无样式内容展现，等到 CSSOM 生成了，再重绘渲染，这样就会看到一部分没样式的内容，然后再看到有样式的。这种分块分步的渲染</li>
-</ol>
-<h2 id="async和defer的作用是什么？有什么区别"><a href="#async和defer的作用是什么？有什么区别" class="headerlink" title="async和defer的作用是什么？有什么区别"></a>async和defer的作用是什么？有什么区别</h2><p>两者都是使脚本异步加载，没有 defer 或 async，浏览器会立即加载<br>并执行指定的脚本，“立即”指的是在渲染该 script 标签之下的文档元素之前，也就是说不等待后续载入的文档元素，读到就加载并执行。</p>
-<p>async：加载和渲染后续文档元素的过程将和 script.js 的加载与执行并行进行（异步）。</p>
-<p>defer：加载后续文档元素的过程将和 script.js 的加载并行进行（异步），但 script.js 的执行要在所有元素解析完成之后，DOMContentLoaded 事件触发之前完成。</p>
-<p>区别：<br>defer:脚本延迟到文档解析和显示后执行，有顺序<br>async:不保证顺序</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-  
-
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-         
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2138,7 +2137,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -2156,7 +2155,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
