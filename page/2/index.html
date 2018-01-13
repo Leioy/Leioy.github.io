@@ -286,6 +286,384 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/性能优化之css.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Leioy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Leioy">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Leioy" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/12/性能优化之css.html" itemprop="url">
+                  性能优化之css
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-26T02:19:55+08:00">
+                2017-12-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+ 
+        
+
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天在深入学习sass的时候看到了属性嵌套的问题，想到之前自己用sass写的代码，经过编译后，非常不利于维护和性能优化。于是在网上参考了许多资料，先总结一下。网上的不一定都正确，这里只做个简单的总结。具体情况要根据实际的情况而异。</p>
+<h2 id="加载性能"><a href="#加载性能" class="headerlink" title="加载性能"></a>加载性能</h2><p>减少文件体积，压缩代码<br>减少阻塞加载，不要用 import</p>
+<h2 id="style标签的相关调优"><a href="#style标签的相关调优" class="headerlink" title="style标签的相关调优"></a>style标签的相关调优</h2><p>把 Stylesheets 放在 HTML 页面头部：<br>浏览器在所有的 stylesheets 加载完成之后，才会开始渲染整个页面，在此之前，浏览器不会渲染页面里的任何内容，页面会一直呈现空白。这也是为什么要把 stylesheet 放在头部的原因。如果放在 HTML 页面底部，页面渲染就不仅仅是在等待 stylesheet 的加载，还要等待 html 内容加载完成，这样一来，用户看到页面的时间会更晚。</p>
+<p>对于 @import 和 link 两种加载外部 CSS 文件的方式：@import 就相当于是把 link 标签放在页面的底部，所以从优化性能的角度看，应该尽量避免使用 @import 命令</p>
+<h2 id="css缩写"><a href="#css缩写" class="headerlink" title="css缩写"></a>css缩写</h2><p>CSS 缩写可以让你用极少的代码定义一系列样式属性，这种做法可以极大程度的缩减代码量以达到提高性能的目的。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"> <span class="attribute">color</span>: <span class="number">#ffffff</span> ----&gt;   <span class="number">#fff</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">12px</span>;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">10px</span>;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">12px</span>;</span><br><span class="line">  <span class="comment">/* 应该写成 */</span></span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">10px</span> <span class="number">12px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="css选择器相关"><a href="#css选择器相关" class="headerlink" title="css选择器相关"></a>css选择器相关</h2><h3 id="子选择器"><a href="#子选择器" class="headerlink" title="子选择器"></a>子选择器</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#toc</span> &gt; <span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>按照我们惯常的理解，编译器应该先查找id为’#toc’的节点，然后在它的直接子节点中查找标签名为’li’的节点，然后绘制样式。<br>实际上恰恰相反，浏览器是从右向左的匹配的。这里，浏览器会先查找所有的’li’节点，然后再做进一步的判断，如果它的父元素为’#toc’则匹配成功</p>
+<h3 id="后代选择器"><a href="#后代选择器" class="headerlink" title="后代选择器"></a>后代选择器</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#toc</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个效率比之前的效率更慢，而且要慢很多。浏览器先便利所有的“li”节点，然后步步上溯其父节点，直到 DOM 结构的根节点（document），如果有某个节点的 id 为“toc”，则匹配成功，否则继续查找下一个“li”节点。</p>
+<h3 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[hidden=&quot;true&quot;] &#123;...&#125;</span><br></pre></td></tr></table></figure>
+<p>这里的匹配规则是查找页面上的所有节点，如果有节点存在“hidden”属性，并且其属性值为“true”，则匹配成功。这是最耗时耗力的匹配，页面上的所有节点都需要进行匹配运算，这种规则应尽量避免。</p>
+<h3 id="id前面有标签名"><a href="#id前面有标签名" class="headerlink" title="id前面有标签名"></a>id前面有标签名</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">button#hover &#123;...&#125;</span><br></pre></td></tr></table></figure>
+<p>id 是全局唯一的，在匹配 CSS 选择器时浏览器定位到 id 是最快的，如果伴随有其他的非 id 的 selector，反而会影响匹配的效率。所以要不要在id选择器前面加标签名</p>
+<h3 id="class前面有标签名"><a href="#class前面有标签名" class="headerlink" title="class前面有标签名"></a>class前面有标签名</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">button.active &#123;...&#125; ----&gt; button-active &#123;...&#125;</span><br></pre></td></tr></table></figure>
+<p>和上面的原理一样,页面上的 class 在全局范围内来讲应该是唯一的，用唯一的 Class 名称来定位一个节点往往比组合定位更加快捷。事实上，这种做法也可以避免由于开发修改页面元素的类型（Tag）而导致的样式失效的情况，做到样式与元素的分离，两者独立维护。</p>
+<h3 id="选择器嵌套"><a href="#选择器嵌套" class="headerlink" title="选择器嵌套"></a>选择器嵌套</h3><p>选择器嵌套的越深匹配的越慢，一般选择器的嵌套不要超过5层。如果发现嵌套过深，这个时候应该用一个特殊的class来代替</p>
+<h3 id="尽量避免使用后代选择器而使用子选择器"><a href="#尽量避免使用后代选择器而使用子选择器" class="headerlink" title="尽量避免使用后代选择器而使用子选择器"></a>尽量避免使用后代选择器而使用子选择器</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span> <span class="selector-tag">a</span>  <span class="selector-tag">----</span>&gt; <span class="selector-tag">ul</span> &gt; <span class="selector-tag">li</span> &gt;<span class="selector-tag">a</span> </span><br><span class="line"><span class="comment">/* 这里只是举个栗子，实际上用标签名做选择器是不好的 */</span></span><br></pre></td></tr></table></figure>
+<h3 id="利用css的继承机制"><a href="#利用css的继承机制" class="headerlink" title="利用css的继承机制"></a>利用css的继承机制</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">li</span> &gt; <span class="selector-tag">a</span> &#123; <span class="attribute">color</span>: <span class="number">#000</span>; &#125;   <span class="selector-tag">---</span>&gt; <span class="selector-tag">li</span> &gt; <span class="selector-tag">a</span> &#123; <span class="attribute">color</span>: inherit; &#125;</span><br></pre></td></tr></table></figure>
+<p>css的许多属性都是可以继承的：Color， Font， Letter-spacing， Line-height， List-style， Text-align， Text-indent， Text-transform， White-space， Word-spacing</p>
+<h2 id="渲染性能"><a href="#渲染性能" class="headerlink" title="渲染性能"></a>渲染性能</h2><h3 id="慎重选择高消耗-绘制前需要浏览器进行大量计算-的样式"><a href="#慎重选择高消耗-绘制前需要浏览器进行大量计算-的样式" class="headerlink" title="慎重选择高消耗(绘制前需要浏览器进行大量计算)的样式:"></a>慎重选择高消耗(绘制前需要浏览器进行大量计算)的样式:</h3><ul>
+<li>box-shadows</li>
+<li>border-radius</li>
+<li>transparency</li>
+<li>transform</li>
+<li>filters(性能杀手)</li>
+</ul>
+<h3 id="避免过分重排-Reflow"><a href="#避免过分重排-Reflow" class="headerlink" title="避免过分重排(Reflow)"></a>避免过分重排(Reflow)</h3><p>简单解释一下 Reflow：当元素改变的时候，将会影响文档内容或结构，或元素位置，此过程称为 Reflow。</p>
+<p>导致reflow的情况：<br>改变窗口大小，改变文字大小，添加/删除样式表，内容的改变，(用户在输入框中写入内容也会)，激活伪类，如:hover，操作class属性，脚本操作DOM，计算offsetWidth和offsetHeight，设置style属性</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">常见的重排元素</th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">width</td>
+<td style="text-align:center">height</td>
+<td style="text-align:center">padding</td>
+<td style="text-align:center">margin</td>
+</tr>
+<tr>
+<td style="text-align:center">display</td>
+<td style="text-align:center">border-width</td>
+<td style="text-align:center">border</td>
+<td style="text-align:center">top</td>
+</tr>
+<tr>
+<td style="text-align:center">positon</td>
+<td style="text-align:center">font-size</td>
+<td style="text-align:center">float</td>
+<td style="text-align:center">text-align</td>
+</tr>
+<tr>
+<td style="text-align:center">overflow-y</td>
+<td style="text-align:center">font-weight</td>
+<td style="text-align:center">overflow</td>
+<td style="text-align:center">left</td>
+</tr>
+<tr>
+<td style="text-align:center">font-family</td>
+<td style="text-align:center">line-height</td>
+<td style="text-align:center">vertical-align</td>
+<td style="text-align:center">right</td>
+</tr>
+<tr>
+<td style="text-align:center">clear</td>
+<td style="text-align:center">white-space</td>
+<td style="text-align:center">bottom</td>
+<td style="text-align:center">min-height</td>
+</tr>
+</tbody>
+</table>
+<p>减少reflow对性能的影响的建议：<br>1.不要一条一条地修改 DOM 的样式，预先定义好 class，然后修改 DOM 的 className<br>2.把 DOM 离线后修改，比如：先把 DOM 给 display:none (有一次 Reflow)，然后你修改100次，然后再把它显示出来<br>3.不要把 DOM 结点的属性值放在一个循环里当成循环里的变量<br>4.尽可能不要修改影响范围比较大的 DOM<br>5.为动画的元素使用绝对定位 absolute / fixed，这样不会影响其他元素的布局<br>6.不要使用 table 布局，可能很小的一个小改动会造成整个 table 的重新布局<br>7.避免设置大量的style属性，因为通过设置style属性改变结点样式的话，每一次设置都会触发一次reflow，所以最好是使用class属性<br>8.动画实现的速度的选择。比如实现一个动画，以1个像素为单位移动这样最平滑，但是reflow就会过于频繁，大量消耗CPU资源，如果以3个像素为单位移动则会好很多。<br>9.不要使用table布局，因为table中某个元素旦触发了reflow，那么整个table的元素都会触发reflow。那么在不得已使用table的场合，可以设置table-layout:auto;或者是table-layout:fixed这样可以让table一行一行的渲染，这种做法也是为了限制reflow的影响范围</p>
+<h3 id="避免过分重绘-Repaints"><a href="#避免过分重绘-Repaints" class="headerlink" title="避免过分重绘(Repaints)"></a>避免过分重绘(Repaints)</h3><p>当元素改变的时候，将不会影响元素在页面当中的位置（比如 background-color, border-color, visibility），浏览器仅仅会应用新的样式重绘此元素，此过程称为 Repaint。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+  
+
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+         
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/let和const命令.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Leioy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.gif">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Leioy">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Leioy" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/12/let和const命令.html" itemprop="url">
+                  let和const命令
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-25T01:30:47+08:00">
+                2017-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+ 
+        
+
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="ES6-新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。"><a href="#ES6-新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。" class="headerlink" title="ES6 新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。"></a>ES6 新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。</h2><p>一道常见的题目<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">a[<span class="number">0</span>](),...,a[<span class="number">9</span>]()  <span class="comment">//var声明的变量是一个全局变量，每一次循环i的值都会改变，循环结束后i的值为10，所以最后输出的值为10</span></span><br></pre></td></tr></table></figure></p>
+<p>如果要改变输出结果，以前要这么写<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  !<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">    a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;(i)</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line">a[<span class="number">1</span>]()</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="keyword">var</span> a = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">    a[i] = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">          <span class="built_in">console</span>.log(i);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;(i)</span><br><span class="line">&#125;</span><br><span class="line">a[<span class="number">1</span>]()</span><br></pre></td></tr></table></figure></p>
+<p>在ES6<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">a[<span class="number">6</span>]()  <span class="comment">//由于变量i是let声明的，当前的i只在本次循坏中有效，每一次循环的i其实都是一个新的变量</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="不存在变量提升。只要使用let或者const命令，变量是不会提升的"><a href="#不存在变量提升。只要使用let或者const命令，变量是不会提升的" class="headerlink" title="不存在变量提升。只要使用let或者const命令，变量是不会提升的"></a>不存在变量提升。只要使用let或者const命令，变量是不会提升的</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(foo)  <span class="comment">// 输出undefined</span></span><br><span class="line"><span class="keyword">var</span> foo = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(bar)  <span class="comment">//报错ReferenceError</span></span><br><span class="line"><span class="keyword">let</span> bar = <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h2 id="暂时性死区"><a href="#暂时性死区" class="headerlink" title="暂时性死区"></a>暂时性死区</h2><p>ES6 明确规定，如果区块中存在let和const命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。总之，在代码块内，使用let命令声明变量之前，该变量都是不可用的。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="comment">// TDZ开始</span></span><br><span class="line">  tmp = <span class="string">'abc'</span>; <span class="comment">// ReferenceError</span></span><br><span class="line">  <span class="built_in">console</span>.log(tmp); <span class="comment">// ReferenceError</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> tmp; <span class="comment">// TDZ结束</span></span><br><span class="line">  <span class="built_in">console</span>.log(tmp); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">  tmp = <span class="number">123</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(tmp); <span class="comment">// 123</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="不允许重复声明"><a href="#不允许重复声明" class="headerlink" title="不允许重复声明"></a>不允许重复声明</h2><p>let不允许在相同作用域内，重复声明同一个变量。</p>
+<h2 id="块级作用域与函数声明"><a href="#块级作用域与函数声明" class="headerlink" title="块级作用域与函数声明"></a>块级作用域与函数声明</h2><p>应该避免在块级作用域内声明函数。如果确实需要，也应该写成函数表达式，而不是函数声明语句。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> a = <span class="string">'secret'</span></span><br><span class="line">  <span class="keyword">let</span> f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="const命令"><a href="#const命令" class="headerlink" title="const命令"></a>const命令</h2><p>const声明一个只读的常量。一旦声明，常量的值就不能改变。这意味着，const一旦声明变量，就必须立即初始化，不能留到以后赋值。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> PI = <span class="number">3.1415</span></span><br><span class="line">PI = <span class="number">3</span>  <span class="comment">//TypeError: Assignment to constant variable.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> foo   <span class="comment">//SyntaxError: Missing initializer in const declaration</span></span><br></pre></td></tr></table></figure></p>
+<p>const实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址不得改动。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为 foo 添加一个属性，可以成功</span></span><br><span class="line">foo.prop = <span class="number">123</span>;</span><br><span class="line">foo.prop <span class="comment">// 123</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将 foo 指向另一个对象，就会报错</span></span><br><span class="line">foo = &#123;&#125;; <span class="comment">// TypeError: "foo" is read-only</span></span><br></pre></td></tr></table></figure></p>
+<p>如果真的想将对象冻结，应该使用Object.freeze方法。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> constantize = <span class="function">(<span class="params">obj</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">Object</span>.freeze(obj);</span><br><span class="line">  <span class="built_in">Object</span>.keys(obj).forEach( <span class="function">(<span class="params">key, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> ( <span class="keyword">typeof</span> obj[key] === <span class="string">'object'</span> ) &#123;</span><br><span class="line">      constantize( obj[key] );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+  
+
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+         
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/书籍推荐.html">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1711,335 +2089,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/css综合.html">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Leioy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Leioy">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Leioy" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/12/css综合.html" itemprop="url">
-                  css综合
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-09T20:53:14+08:00">
-                2017-12-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
- 
-        
-
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="说一说你平时写代码遵守的编码规范"><a href="#说一说你平时写代码遵守的编码规范" class="headerlink" title="说一说你平时写代码遵守的编码规范"></a>说一说你平时写代码遵守的编码规范</h2><ol>
-<li>良好的命名规范<br>ID和class的命名尽可能短，并符合语义。多个单词的拼接用 ‘-‘ 符号链接，尽量使用小写字母</li>
-<li>代码缩写<br>css代码缩写可以提高写代码的速度，精简代码质量。</li>
-<li>利用CSS继承<br>如果页面中父元素的多个子元素使用相同的样式，那最好把他们相同的样式定 义在其父元素上，让它们继承这些CSS样式。这样可以很好的维护代码，并且还可以减少代码量。</li>
-<li>使用多重选择器<br>可以合并多个CSS选择器为一个，如果他们有共同的样式的话。这样做不但代 码简洁且可节省时间和空间</li>
-<li>适当的代码注释<br>代码注释可以让别人更容易读懂代码，且合理的组织代码注释，可使得结构更加清晰。</li>
-<li>选择更优的样式属性值<br>CSS中有些属性采用不同的属性值，虽然达到的效果差不多，当性能上却存在着差异，如：<br>区别在于border:0把border设为0px，虽然在页面上看不见，但按border默认值理解，浏览器依然对border-width/border-color进行了渲染，即已经占用了内存值。<br>而border:none把border设为“none”即没有，浏览器解析“none”时将不作出渲染动作，即不会消耗内存值。所以建议使用border:none;同样的，display:none隐藏对象浏览器不作渲染，不占用内存。而visibility:hidden则会。</li>
-<li>避免使用css hack</li>
-</ol>
-<h2 id="垂直居中有几种实现方式，给出代码范例"><a href="#垂直居中有几种实现方式，给出代码范例" class="headerlink" title="垂直居中有几种实现方式，给出代码范例"></a>垂直居中有几种实现方式，给出代码范例</h2><p><a href="http://js.jirengu.com/noxesetiru/1/edit?html,output" target="_blank" rel="noopener">绝对定位实现居中</a><br><a href="http://js.jirengu.com/xobuzedibi/1/edit?html,output" target="_blank" rel="noopener">padding值实现居中</a><br><a href="http://js.jirengu.com/xobuzedibi/2/edit?html,output" target="_blank" rel="noopener">添加伪元素实现居中</a><br><a href="http://js.jirengu.com/cinovuvedi/1/edit?html,output" target="_blank" rel="noopener">display:table-cell</a><br><a href="http://js.jirengu.com/cinovuvedi/2/edit?html,output" target="_blank" rel="noopener">table标签实现居中</a><br><a href="http://js.jirengu.com/cinovuvedi/3/edit?html,output" target="_blank" rel="noopener">flex实现居中</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-  
-
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-         
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/浏览器兼容.html">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Leioy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Leioy">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Leioy" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/12/浏览器兼容.html" itemprop="url">
-                  浏览器兼容
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-09T20:22:11+08:00">
-                2017-12-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
- 
-        
-
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="什么是-CSS-hack"><a href="#什么是-CSS-hack" class="headerlink" title="什么是 CSS hack"></a>什么是 CSS hack</h2><p>Hack是针对不同的浏览器去写不同的CSS样式，从而让各浏览器能达到一致的渲染效果，那么针对不同的浏览器写不同的CSS CODE的过程，就叫CSS HACK，同时也叫写CSS Hack。</p>
-<h2 id="谈一谈浏览器兼容的思路"><a href="#谈一谈浏览器兼容的思路" class="headerlink" title="谈一谈浏览器兼容的思路"></a>谈一谈浏览器兼容的思路</h2><ol>
-<li>要不要做：<br>产品的角度：（产品的受众、受众的浏览器比例、效果优先还是基本功能优先）<br>成本的角度： (有无必要做某件事)</li>
-<li>做到什么程度：<br>让哪些浏览器支持哪些效果</li>
-<li>如何做<br>根据兼容需求选择技术框架/库(jquery)<br>根据兼容需求选择兼容工具(<a href="https://github.com/aFarkas/html5shiv" target="_blank" rel="noopener">html5shiv.js</a>、<a href="https://github.com/scottjehl/Respond" target="_blank" rel="noopener">respond.js</a>、<a href="https://segmentfault.com/a/1190000003021766" target="_blank" rel="noopener">css reset</a>、normalize.css、<a href="https://github.com/Modernizr/Modernizr" target="_blank" rel="noopener">Modernizr</a>)</li>
-</ol>
-<h2 id="列举5种以上浏览器兼容的写法"><a href="#列举5种以上浏览器兼容的写法" class="headerlink" title="列举5种以上浏览器兼容的写法"></a>列举5种以上浏览器兼容的写法</h2><ol>
-<li><p>属性前缀法(即类内部Hack)：例如 IE6能识别下划线”_”和星号” <em> “，IE7能识别星号” </em> “，但不能识别下划线””，IE6~IE10都认识”\9”，但firefox前述三个都不能认识</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>:  red;</span><br><span class="line">  <span class="attribute">_color</span>:  blue;<span class="comment">/*IE6*/</span></span><br><span class="line">  *color:  black;/*IE6,7*/</span><br><span class="line">  <span class="selector-tag">color</span>:  <span class="selector-tag">yellow</span>;<span class="comment">/*IE6-10*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>选择器前缀法(即选择器Hack)：比如IE6能识别*html .class{}，IE7能识别+html .class{}</p>
-</li>
-<li><p>条件注释</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--[if IE 7]&gt;&lt;link rel="stylesheet" href="ie7.css" type="text/css"/&gt;&lt;![endif]--&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>IE条件注释法结合选择器整体优化</p>
-</li>
-<li>利用normalize.css,统一所有浏览器样式</li>
-</ol>
-<h2 id="以下工具-名词是做什么的"><a href="#以下工具-名词是做什么的" class="headerlink" title="以下工具/名词是做什么的"></a>以下工具/名词是做什么的</h2><ul>
-<li>条件注释<br>条件注释是于HTML源码中被 IE 有条件解释的语句。条件注释可被用来向 IE提供及隐藏代码。</li>
-<li>IE Hack<br>针对IE浏览器编写不同的CSS的让IE能够在不同的正常渲染的过程</li>
-<li>js 能力检测<br>检测浏览器的能力检测目标不是检测特定的浏览器，而是检测浏览器的能力。这样，只需要检测浏览器是否支持特定的能力，就可以给出特定的解决方案。这一部分检测是解决浏览器兼容问题的主要检测。</li>
-<li>html5shiv.js<br>html5shiv.js是一个js库，用于解决IE9以下版本浏览器对HTML5新增标签不识别，并导致CSS不起作用的问题。</li>
-<li>respond.js<br>Respond.js 是一个快速、轻量的 polyfill，用于为 IE6-8 以及其它不支持 CSS3 Media Queries 的浏览器提供媒体查询的 min-width 和 max-width 特性，实现响应式网页设计（Responsive Web Design）。</li>
-<li>css reset<br>重置浏览器的默认样式，更准确说就是通过重新定义标签样式，“覆盖”浏览器的CSS默认属性。</li>
-<li>normalize.css<br>先定义好一些CSS样式的同时保护有用的原生CSS样式，来让所有浏览器都按照同样的规则解释CSS。</li>
-<li>Modernizr<br>Modernizr 是一个用来检测浏览器功能支持情况的 JavaScript 库。通过这个库我们可以检测不同的浏览器对于HTML5特性的支持情况。并以类标识的方式添加到标签中。</li>
-<li>postCSS<br>PostCSS是一个使用JavaScript插件来转换CSS的工具。能够达到兼容各种不同浏览器的效果，同时拥有很多插件。</li>
-</ul>
-<h2 id="一般在哪个网站查询属性兼容性？"><a href="#一般在哪个网站查询属性兼容性？" class="headerlink" title="一般在哪个网站查询属性兼容性？"></a>一般在哪个网站查询属性兼容性？</h2><p><a href="https://caniuse.com/" target="_blank" rel="noopener">caniuse</a> 查询css兼容性<br><a href="http://browserhacks.com/" target="_blank" rel="noopener">browserhacks</a>查询Hack 的写法<br><a href="http://tongji.baidu.com/data/browser" target="_blank" rel="noopener">浏览器市场份额</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-  
-
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-         
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2089,7 +2138,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
