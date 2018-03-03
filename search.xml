@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[BFC]]></title>
+    <url>%2F2018%2F03%2FBFC.html</url>
+    <content type="text"><![CDATA[到底什么是BFC？很多人都对BFC不理解，其实我也不理解，因为规范上对BFC的解释实在是太抽象了。 CSS规范中对BFC的描述 9.4.1 块格式化上下文浮动，绝对定位的元素，非块盒的块容器（例如inline-blocks，table-cells和table-captions），以及’overflow’不为’visible’的块盒（当该值已被传播到视口时除外（except when that value has been propagated to the viewport））会为其内容建立新的块格式化上下文 在一个块格式化上下文中，盒在垂直方向一个接一个地放置，从包含块的顶部开始。两个兄弟盒之间的垂直距离由’margin’属性决定。同一个块格式化上下文中的相邻块级盒之间的垂直外边距会合并 在一个块格式化上下文中，每个盒的左外边界（left outer edge）挨着包含块的左外边界（对于从右向左的格式化，右外边界挨着）。即使存在浮动（尽管一个盒的行框可能会因为浮动而收缩 译注：环绕浮动元素放置的行框比正常的行短一些），这也成立。除非该盒建立了一个新的块格式化上下文（这种情况下，该盒自身可能会因为浮动变窄）对于W3C标准对BFC的解释，我相信大部分人都看不懂，完全不明所以。 那么我们来看看稍微正常的一点的解释 MDN对BFC的描述 块格式化上下文（Block Formatting Context，BFC） 是Web页面的可视化CSS渲染的部分，是块级盒布局发生的区域，也是浮动元素与其他元素交互的区域。 创建块格式化上下文的方式如下： 根元素或其它包含它的元素 浮动元素 (元素的 float 不是 none) 绝对定位元素 (元素的 position 为 absolute 或 fixed) 内联块元素 (元素具有 display: inline-block) 表格单元格 (元素具有 display: table-cell，HTML表格单元格默认属性) 表格标题 (元素具有 display: table-caption, HTML表格标题默认属性) 匿名表格元素 (元素具有 display: table, table-row, table-row-group, table-header-group, table-footer-group [分别是HTML tables, table rows, table bodies, table headers and table footers的默认属性]，或 inline-table ) overflow 值不为 visible 的块元素， display 值为 flow-root 的元素 contain 值为 layout, content, 或 strict 的元素 弹性元素 (display: flex 或 inline-flex元素的子元素) 网格元素 (display: grid 或 inline-grid 元素的子元素) 多列容器 (元素的 column-count 或 column-width 不为 auto 即视为多列，column-count: 1的元素也属于多列) 即便具有 column-span: all 的元素没有被包裹在一个多列容器中，column-span: all 也始终会创建一个新的格式化上下文。 块格式化上下文包含创建它的元素内的所有内容。 块格式化上下文对于定位 (参见 float) 与清除浮动 (参见 clear) 很重要。定位和清除浮动的样式规则只适用于处于同一块格式化上下文内的元素。浮动不会影响其它块格式化上下文中元素的布局，并且清除浮动只能清除同一块格式化上下文中在它前面的元素的浮动。Margin collapsing也只发生在属于同一块格式化上下文的块级元素之间。 张鑫旭的BFC的描述 BFC全称”Block Formatting Context”, 中文为“块级格式化上下文”。啪啦啪啦特性什么的，一言难尽，大家可以自行去查找，我这里不详述，免得乱了主次，总之，记住这么一句话：BFC元素特性表现原则就是，内部子元素再怎么翻江倒海，翻云覆雨都不会影响外部的元素。所以，避免margin穿透啊，清除浮动什么的也好理解了。 BFC FUCK，BFC到底是什么？先思考一个问题：什么是色情？ 联邦最高法院大法官斯图尔特更有一句名言 我不知道什么是色情，不过，我看了之后，就能知道 类似的：1.我不知道什么是 BFC2.但是你写出样式，我就知道这是不是 BFC我们不用知道BFC的定义，只需要知道它的特性和功能。 功能1：爸爸管儿子用BFC的特性包住浮动元素（这不是清除浮动）http://js.jirengu.com/basixasuwu/2/edit 在父元素上设置float(不为none)，绝对定位，display:inline-block都能触发BFC从而使得包住浮动元素。虽然达到包住浮动元素的效果，但是父元素的属性变化了，比如float。我只想简单的生成一个BFC能不能不要搞那么多幺蛾子？有一个属性：display:flow-root可以满足你。 功能2：兄弟之间划清界限http://js.jirengu.com/sokuxolori/1/edit?html,css,output可以利用这种特性做一个左边固定宽度，右侧自适应的布局]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[十大排序之冒泡排序]]></title>
     <url>%2F2018%2F02%2F%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F.html</url>
     <content type="text"><![CDATA[算法描述冒泡排序（Bubble Sort）是一种简单直观的排序算法。它重复地走访过要排序的数列，依次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。 时间复杂度 空间复杂度 稳定性 时间复杂度：O(n^2) 空间复杂度：O(1) 稳定性：稳定 算法实现1234567891011121314151617let arr = [32,2,7,10,8,18,21,1,100,86,16,35]function bubbleSort(arr) &#123; let len = arr.length let temp; for(let i = 0; i &lt; len; i++) &#123; for(let j = 0; j &lt; len - 1 - i; j++) &#123; if(arr[j] &gt; arr[j+1]) &#123; temp = arr[j+1] arr[j+1] = arr[j] arr[j] = temp &#125; &#125; &#125; return arr&#125;console.log(bubbleSort(arr)) //[ 1, 2, 7, 8, 10, 16, 18, 21, 32, 35, 86, 100 ]]]></content>
